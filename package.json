@@ -1,7 +1,7 @@
 {
   "name": "deployit",
   "version": "0.1.0",
-  "description": "ERROR: No README.md file found!",
+  "description": "",
   "main": "lib/server.js",
   "directories": {
     "test": "test"
@@ -13,6 +13,6 @@
   "author": "",
   "license": "BSD",
   "dependencies": {
-    "connect": "~2.7.2"
+    "express": "3.x"
   }
 }
