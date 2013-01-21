@@ -1,1 +1,9 @@
 /* Will be compiled down to a single stylesheet with your sass files */
+
+.dropZone {
+    background-image: url("img/project_papper.png");
+    border-radius:4px;
+    text-align:center;
+    margin:10px;
+    padding:20px
+}

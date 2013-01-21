@@ -2,7 +2,7 @@
   "name": "deployit",
   "version": "0.1.0",
   "description": "",
-  "main": "lib/server.js",
+  "main": "lib/app.js",
   "directories": {
     "test": "test"
   },
@@ -13,6 +13,8 @@
   "author": "",
   "license": "BSD",
   "dependencies": {
-    "express": "3.x"
+    "express": "~3.0.3",
+    "jade": "~0.28.1",
+    "i18n": "~0.3.5"
   }
 }
