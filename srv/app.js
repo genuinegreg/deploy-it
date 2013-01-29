@@ -35,10 +35,12 @@ app.configure(function() {
     app.use(express.bodyParser());
     app.use(express.methodOverride());
 
+
+    app.use(express['static']('../app/'));
+
     // using 'accept-language' header to guess language settings
     app.use(i18n.init);
     app.use(app.router);
-    app.use(express['static']('../dist/'));
 });
 
 app.configure('development', function() {
@@ -50,6 +52,15 @@ app.get('/users', user.list);
 
 app.get('/view/main', function(req, res, next) {
     res.render('main');
+});
+
+
+app.all('/upload', function(req, res) {
+
+console.log(req.files);
+
+    res.end("<h1>plop</h1>");
+    console.log('plop');
 });
 
 http.createServer(app).listen(app.get('port'), function() {

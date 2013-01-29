@@ -18,34 +18,22 @@
 <body ng-app="deployitApp">
 
         <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-            <![endif]-->
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
 
         <!--[if lt IE 9]>
-            <script src="scripts/vendor/es5-shim.min.js"></script>
-            <script src="scripts/vendor/json3.min.js"></script>
-            <![endif]-->
+        <script src="scripts/vendor/es5-shim.min.js"></script>
+        <script src="scripts/vendor/json3.min.js"></script>
+        <![endif]-->
 
-            <!-- Add your site or application content here -->
+        <!-- Add your site or application content here -->
 
 
 
-            <div class="container" style="margin-top:50px" ng-view>
-            </div>
+        <div class="container" style="margin-top:50px" ng-view>
+        </div>
 
-    <script src="///ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
-
-    <!-- build:js scripts/fineuploader.js -->
-    <script src="vendor/fineuploader/js/header.js"></script>
-    <script src="vendor/fineuploader/js/util.js"></script>
-    <script src="vendor/fineuploader/js/button.js"></script>
-    <script src="vendor/fineuploader/js/uploader.basic.js"></script>
-    <script src="vendor/fineuploader/js/dnd.js"></script>
-    <script src="vendor/fineuploader/js/uploader.js"></script>
-    <script src="vendor/fineuploader/js/handler.base.js"></script>
-    <script src="vendor/fineuploader/js/handler.form.js"></script>
-    <script src="vendor/fineuploader/js/handler.xhr.js"></script>
-    <!-- endbuild -->
+       <script src="///ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
 
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/app.js"></script>
@@ -53,24 +41,6 @@
     <script src="scripts/controllers/upload.js"></script>
     <!-- endbuild -->
 
-    <script>
-      function createUploader() {
-        var uploader = new qq.FineUploader({
-          // Pass the HTML element here
-          element: document.getElementById('fine-uploader'),
-          // or, if using jQuery
-          // element: $('#fine-uploader')[0],
-          // Use the relevant server script url here
-          // if it's different from the default “/server/upload”
-          request: {
-            endpoint: '///paprika.dev:3000/api/upload'
-          },
-          debug: true
-        });
-      }
-    
-      window.onload = createUploader;
-    </script>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

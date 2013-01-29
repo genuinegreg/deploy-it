@@ -1,34 +1,49 @@
 <div class="hero-unit">
-    <h1>Deploy.it <small>Déployez votre application Ad Hoc en un instant</small></h1>
+    <h1>Deploy.it
+        <small>Déployez votre application Ad Hoc en un instant</small>
+    </h1>
 </div>
 
 <div class="row">
     <div class="span4">
         <h2>Deployez à la vitesse de l’éclair</h2>
+
         <p>
-            Déposez dans la zone d’upload le fichier de l‘application que vous souhaitez déployer. En quelques instants un lien vous permettant d’installer l’application est généré !
+            Déposez dans la zone d’upload le fichier de l‘application que vous souhaitez déployer. En quelques instants
+            un lien vous permettant d’installer l’application est généré !
         </p>
     </div>
 
     <div class="span4">
         <h2>Support multi-plateforme</h2>
+
         <p>
-            Que votre application vise iOS, Android ou Windows Phone, deploy.it s’occupe de tout et crée chacun des fichiers nécessaires. Gagnez un maximum d’efficacité lors des déploiements !
+            Que votre application vise iOS, Android ou Windows Phone, deploy.it s’occupe de tout et crée chacun des
+            fichiers nécessaires. Gagnez un maximum d’efficacité lors des déploiements !
         </p>
     </div>
     <div class="span4">
         <h2>Fiable et sécurisé</h2>
+
         <p>
-            Vous seul connaissez le lien permettant de télécharger votre application. Vous avez tout contrôle sur son partage, que ce soit auprès d’une ou de 10 000 personnes !
+            Vous seul connaissez le lien permettant de télécharger votre application. Vous avez tout contrôle sur son
+            partage, que ce soit auprès d’une ou de 10 000 personnes !
         </p>
     </div>
 </div>
 
 <div>
-    <div class="dropZone">
+    <div class="dropZone" id="dropZone">
         <a class="btn btn-primary btn-large"> DEPLOY IT NOW </a>
+
         <div>
             <h3 class="muted"> Drop your [.ipk, .apk, .exe] here... </h3>
+            <p id="upload" class="hidden"><label>Drag &amp; drop not supported, but you can still upload via this input field:<br><input type="file"></label></p>
+            <p id="filereader">File API &amp; FileReader API not supported</p>
+            <p id="formdata">XHR2's FormData is not supported</p>
+            <p id="progress">XHR2's upload progress isn't supported</p>
+            <progress id="uploadprogress" min="0" max="100" value="0"></progress>
+            0%
         </div>
     </div>
 </div>
@@ -39,7 +54,7 @@
 
     <div class="span12">
         <h2>
-            Vous souhaitez être encore plus efficace? 
+            Vous souhaitez être encore plus efficace?
             <small>Souscrivez à l’un des plans pro pour profiter pleinement de deploy.it et gagner en productivité !
             </small>
 
@@ -53,16 +68,19 @@
 
     <div class="span4">
         <h3>Repoussez vos limites</h3>
-        Uploadez des fichiers allant jusqu’à  1Go dont le lien restera valide aussi longtemps que vous le souhaitez. Vous avez tout contrôle sur la disponibilité en téléchargement de votre application.
+        Uploadez des fichiers allant jusqu’à 1Go dont le lien restera valide aussi longtemps que vous le souhaitez. Vous
+        avez tout contrôle sur la disponibilité en téléchargement de votre application.
     </div>
 
     <div class="span4">
         <h3>Gérez vos déploiements</h3>
-        Un historique des versions vous permet de retrouver chacune d’elle sur une interface dédié. Vous n’avez pas à faire quoi-que ce soit, tout est géré automatiquement.
+        Un historique des versions vous permet de retrouver chacune d’elle sur une interface dédié. Vous n’avez pas à
+        faire quoi-que ce soit, tout est géré automatiquement.
     </div>
 
     <div class="span4">
         <h3>Analysez et gérez vos téléchargement</h3>
-        Profitez d’un vision claire et synthétique des téléchargements de chacunes des versions de votre application. Consultez et limitez leur nombre selon votre bon vouloir !
+        Profitez d’un vision claire et synthétique des téléchargements de chacunes des versions de votre application.
+        Consultez et limitez leur nombre selon votre bon vouloir !
     </div>
 </div>
