@@ -26,6 +26,10 @@ exports.upload = function upload(req, res) {
     console.log('file mime :', req.files.file.mime);
 
     var hash = mmh.murmur32HexSync(new Date() + 'plop');
+
+
+    fs.renameSync(req.files.file.path, path.join('/data', hash));
+
     console.log('hash : ' + hash);
 
 
@@ -40,13 +44,13 @@ exports.upload = function upload(req, res) {
 // DOWNLAOD ROUTES
 
 exports.downloadHtml = function downloadHtml(req, res) {
-
+    res.render('download/html', {hash:req.param('hash')});
 };
 
 exports.downloadPlist = function downloadHtml(req, res) {
-
+    res.render('download/plist', {hash:req.param('hash')});
 };
 
 exports.downloadIpa = function downloadHtml(req, res) {
-    res.send
+    res.send(path.join('/data', req.param('hash')));
 };

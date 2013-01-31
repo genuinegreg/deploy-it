@@ -70,9 +70,9 @@ app.all('/upload', function(req, res) {
  * Download handlers
  */
 
-app.get('/download/:hash.html', upload.downloadHtml);
 app.get('/download/:hash.plist', upload.downloadPlist);
 app.get('/download/:hash.ipa', upload.downloadIpa);
+app.get('/download/:hash', upload.downloadHtml);
 
 
 http.createServer(app).listen(app.get('port'), function () {
