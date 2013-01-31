@@ -39,7 +39,7 @@ deployitApp.controller('MainCtrl', ['$scope', '$document', function ($scope, $do
 
 
     function readfiles(files) {
-        debugger;
+//        debugger;
         var formData = tests.formdata ? new FormData() : null;
         for (var i = 0; i < files.length; i++) {
             if (tests.formdata) formData.append('file', files[i]);
@@ -73,6 +73,14 @@ deployitApp.controller('MainCtrl', ['$scope', '$document', function ($scope, $do
         holder.ondrop = function (e) {
             this.className = '';
             e.preventDefault();
+
+            var files = e.dataTransfer.files;
+
+            if (files.length !== 1) {
+                console.log('Upload just ONE file.');
+                return;
+            }
+
             readfiles(e.dataTransfer.files);
         }
     } else {
