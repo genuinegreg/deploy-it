@@ -3,14 +3,14 @@
 // deps
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
+var upload = require('./routes/upload');
 var http = require('http');
 var path = require('path');
 var i18n = require('i18n');
 
 // config i18n
 i18n.configure({
-    locales: ['en', 'fr']
+    locales:['en', 'fr']
 });
 
 
@@ -19,12 +19,12 @@ var app = express();
 
 // config i18n helpers
 app.locals({
-    __: i18n.__,
-    __n: i18n.__n
+    __:i18n.__,
+    __n:i18n.__n
 });
 
 
-app.configure(function() {
+app.configure(function () {
 
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
@@ -32,6 +32,12 @@ app.configure(function() {
 
     app.use(express.favicon());
     app.use(express.logger('dev'));
+
+    app.use(function (req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        next();
+    });
+
     app.use(express.bodyParser());
     app.use(express.methodOverride());
 
@@ -43,26 +49,32 @@ app.configure(function() {
     app.use(app.router);
 });
 
-app.configure('development', function() {
+app.configure('development', function () {
     app.use(express.errorHandler());
 });
 
-// app.get('/', routes.index);
-app.get('/users', user.list);
-
-app.get('/view/main', function(req, res, next) {
+app.get('/view/main', function (req, res, next) {
     res.render('main');
 });
 
-
+/**
+ * Upload handler
+ */
+app.post('/upload', upload.upload);
 app.all('/upload', function(req, res) {
-
-console.log(req.files);
-
-    res.end("<h1>plop</h1>");
-    console.log('plop');
+    res.end();
 });
 
-http.createServer(app).listen(app.get('port'), function() {
+
+/**
+ * Download handlers
+ */
+
+app.get('/download/:hash.html', upload.downloadHtml);
+app.get('/download/:hash.plist', upload.downloadPlist);
+app.get('/download/:hash.ipa', upload.downloadIpa);
+
+
+http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
