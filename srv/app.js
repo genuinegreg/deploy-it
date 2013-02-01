@@ -42,7 +42,7 @@ app.configure(function () {
     app.use(express.methodOverride());
 
 
-    app.use(express['static']('../app/'));
+    app.use(express['static']('../dist/'));
 
     // using 'accept-language' header to guess language settings
     app.use(i18n.init);

@@ -1,4 +1,3 @@
-
 'use strict';
 
 deployitApp.controller('MainCtrl', ['$scope', '$document', function ($scope, $document) {
@@ -41,16 +40,21 @@ deployitApp.controller('MainCtrl', ['$scope', '$document', function ($scope, $do
     function readfiles(files) {
 //        debugger;
         var formData = tests.formdata ? new FormData() : null;
-        for (var i = 0; i < files.length; i++) {
-            if (tests.formdata) formData.append('file', files[i]);
-//            previewfile(files[i]);
+
+        if (files.length < 1) {
+            console.log('Error : no file');
+            return;
         }
+
 
         // now post a new XHR request
         if (tests.formdata) {
+
+            formData.append('file', files[0]);
+
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'http://127.0.0.1:3000/upload');
-            xhr.onload = function() {
+            xhr.onload = function () {
                 progress.value = progress.innerHTML = 100;
             };
 
@@ -64,12 +68,19 @@ deployitApp.controller('MainCtrl', ['$scope', '$document', function ($scope, $do
             }
 
             xhr.send(formData);
+
         }
     }
 
     if (tests.dnd) {
-        holder.ondragover = function () { this.className = 'hover'; return false; };
-        holder.ondragend = function () { this.className = ''; return false; };
+        holder.ondragover = function () {
+            this.className = 'hover';
+            return false;
+        };
+        holder.ondragend = function () {
+            this.className = '';
+            return false;
+        };
         holder.ondrop = function (e) {
             this.className = '';
             e.preventDefault();
