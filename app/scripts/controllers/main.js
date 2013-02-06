@@ -67,6 +67,16 @@ deployitApp.controller('MainCtrl', ['$scope', '$document', function ($scope, $do
                 }
             }
 
+
+            // handle server response
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    var result = JSON.parse(xhr.responseText);
+                    console.log(conf.http.host + result.hash);
+                }
+            }
+
+
             xhr.send(formData);
 
         }
