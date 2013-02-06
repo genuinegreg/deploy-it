@@ -78,9 +78,9 @@ app.all('/upload', function (req, res) {
 /**
  * Download handlers
  */
-app.get('/download/:hash.plist', upload.downloadPlist);
-app.get('/download/:hash.ipa', upload.downloadIpa);
-app.get('/download/:hash', upload.downloadHtml);
+app.get('/:hash.plist', upload.downloadPlist);
+app.get('/:hash.ipa', upload.downloadIpa);
+app.get('/:hash', upload.downloadHtml);
 
 
 exports.app = app;
