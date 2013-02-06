@@ -8,6 +8,8 @@ var http = require('http');
 var path = require('path');
 var i18n = require('i18n');
 
+var conf = require('./etc/config.json');
+
 // config i18n
 i18n.configure({
     locales:['en', 'fr']
@@ -26,7 +28,7 @@ app.locals({
 
 app.configure(function () {
 
-    app.set('port', process.env.PORT || 3000);
+    app.set('port', process.env.PORT || conf.http.port);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
 
@@ -38,7 +40,7 @@ app.configure(function () {
         next();
     });
 
-    app.use(express.bodyParser());
+    app.use(express.bodyParser({ uploadDir: conf.paths.upload }));
     app.use(express.methodOverride());
 
 
@@ -75,6 +77,5 @@ app.get('/download/:hash.ipa', upload.downloadIpa);
 app.get('/download/:hash', upload.downloadHtml);
 
 
-http.createServer(app).listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
-});
+exports.app = app;
+
