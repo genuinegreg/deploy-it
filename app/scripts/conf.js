@@ -1,0 +1,6 @@
+
+var conf  = {
+    http: {
+        host: "///"
+    }
+}

@@ -53,7 +53,7 @@ deployitApp.controller('MainCtrl', ['$scope', '$document', function ($scope, $do
             formData.append('file', files[0]);
 
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://127.0.0.1:3000/upload');
+            xhr.open('POST', conf.http.host + 'upload');
             xhr.onload = function () {
                 progress.value = progress.innerHTML = 100;
             };
