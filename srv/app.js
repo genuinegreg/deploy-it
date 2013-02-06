@@ -25,7 +25,6 @@ app.locals({
     __n:i18n.__n
 });
 
-
 app.configure(function () {
 
     app.set('port', process.env.PORT || conf.http.port);
@@ -33,18 +32,26 @@ app.configure(function () {
     app.set('view engine', 'jade');
 
     app.use(express.favicon());
-    app.use(express.logger('dev'));
+});
 
+app.configure('development', function () {
+    app.use(express.logger('dev'));
     app.use(function (req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
         next();
     });
+    app.use(express['static']('../app/'));
+});
 
-    app.use(express.bodyParser({ uploadDir: conf.paths.upload }));
-    app.use(express.methodOverride());
-
-
+app.configure('production', function () {
+    app.use(express.logger());
     app.use(express['static']('../dist/'));
+});
+
+app.configure(function () {
+
+    app.use(express.bodyParser({ uploadDir:conf.paths.upload }));
+    app.use(express.methodOverride());
 
     // using 'accept-language' header to guess language settings
     app.use(i18n.init);
@@ -63,7 +70,7 @@ app.get('/view/main', function (req, res, next) {
  * Upload handler
  */
 app.post('/upload', upload.upload);
-app.all('/upload', function(req, res) {
+app.all('/upload', function (req, res) {
     res.end();
 });
 
@@ -71,7 +78,6 @@ app.all('/upload', function(req, res) {
 /**
  * Download handlers
  */
-
 app.get('/download/:hash.plist', upload.downloadPlist);
 app.get('/download/:hash.ipa', upload.downloadIpa);
 app.get('/download/:hash', upload.downloadHtml);
