@@ -14,11 +14,10 @@ exports.handle = function handle(file, cb) {
     sync(fs, 'rename');
     sync(mmh, 'murmur32Hex');
 
+    var hash;
+
     sync.fiber(
         function () {
-
-            // def vars
-            var hash;
 
 
             // get hash
@@ -38,7 +37,9 @@ exports.handle = function handle(file, cb) {
             console.log('rename... OK');
 
         },
-        cb);
+        function() {
+            cb(undefined, hash);
+        });
 
 
 }
