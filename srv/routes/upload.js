@@ -63,5 +63,5 @@ exports.downloadPlist = function downloadHtml(req, res) {
 };
 
 exports.downloadIpa = function downloadHtml(req, res) {
-    res.send(path.join('/data', req.param('hash')));
+    res.send(path.join(conf.paths.data, req.param('hash') + '.ipa'));
 };
