@@ -1,0 +1,85 @@
+/*-------------------------------------------------*\
+ *  General
+ *-------------------------------------------------*/
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: #f9f9f9 url('../img/snow.png') repeat;
+}
+h1{
+    font-weight: 200;
+    color:#fc543e;
+    font-size: 48px;
+}
+h2{
+    color:#444;
+    font-size: 24px;
+}
+p, li{
+    font-size: 16px;
+    color: #999;
+}
+hr{
+    margin:5px 0;
+}
+/*-------------------------------------------------*\
+ *  Header
+ *-------------------------------------------------*/
+header{
+    padding : 20px 0 20px;
+}
+header .btn{
+    font-size: 16px;
+}
+header .btn.btn-link{
+    color:#999;
+    margin-left:10px;
+}
+
+header #logo span.baseline{
+    display: block;
+    margin:-16px 0 0 70px;
+    font-size: 15px;
+}
+
+header ul#menu{
+    margin-top:50px;
+    list-style-type: none;
+    text-align: right;
+}
+
+header ul#menu li{
+    display: inline;
+}
+
+header .focus{
+    background: #2d2d2d;
+    padding:20px 0;
+}
+/*-------------------------------------------------*\
+ *  section
+ *-------------------------------------------------*/
+section{
+    padding : 20px 0 30px;
+}
+section .title_icon{
+    margin: -5px 8px 0 -8px;
+}
+
+section p{
+    text-align: justify;
+}
+/*-------------------------------------------------*\
+ *  Footer
+ *-------------------------------------------------*/
+footer{
+    background-color: #2d2d2d;
+    padding : 40px 0 50px;
+}
+footer h1{
+    color:#fff;
+}
+footer h2{
+    color:#fc543e;
+}

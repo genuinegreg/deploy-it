@@ -2,7 +2,6 @@
 
 dployApp.controller('MainCtrl', ['$scope', '$document', function ($scope, $document) {
 
-
     var holder = document.getElementById('dropZone'),
         tests = {
             filereader:typeof FileReader !== 'undefined',

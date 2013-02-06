@@ -1,0 +1,113 @@
+/*-------------------------------------------------*\
+ *  Dropzone
+ *-------------------------------------------------*/
+.dropzone{
+    width: 950px;
+    height: 450px;
+    border: 3px dashed rgba(255,255,255,0.2);
+    border-radius: 4px;
+    margin: 0 auto;
+    -webkit-transition: border 0.3s ease-in-out;
+}
+
+.dropzone.in{
+    border: 3px dashed rgba(255,255,255,0.9);
+}
+
+#animation {
+    width: 940px;
+    height: 440px;
+    margin: 5px auto;
+    position: relative;
+    overflow: hidden;
+    opacity: 1;
+    
+}
+
+.drop {
+    position: absolute;
+    margin: 120px 350px;
+    width: 200px;
+    text-align: center;
+}
+.drop h4 {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #dcdacb;
+}
+.airplane {
+    position: absolute;
+    margin: 300px 350px;
+    opacity: 0;
+    width: 200px;
+    text-align: center;
+}
+.airplane h4 {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #276f87;
+}
+.img {
+    position: absolute
+}
+.trees,
+.houses,
+.city { margin-top: -500px }
+
+/*-------------------------------------------------*\
+ *  foreground Animations
+ *-------------------------------------------------*/
+.animated .drop {
+    -webkit-animation: drop 0.3s ease-in;
+    -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes drop {
+    0% {
+        -webkit-transform: scale(1);
+        opacity : 1;
+    }
+    100% {
+        -webkit-transform: scale(1.3);
+        opacity : 0;
+    }
+}
+
+.animated .airplane {
+    -webkit-animation: launchairplane 2s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes launchairplane {
+    0% {
+        margin-top: 200px;
+        opacity: 0;
+    }
+    66% { opacity: 1;}
+    100% {
+        margin-top: 120px;
+        opacity: 1;
+    }
+}
+
+/*-------------------------------------------------*\
+ *  Landscape Animations
+ *-------------------------------------------------*/
+
+/* Trees */
+.animated .trees {
+    -webkit-animation: movelandscape 1s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+}
+/* Houses */
+.animated .houses {
+    -webkit-animation: movelandscape 1.4s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+}
+.animated .city {
+    -webkit-animation: movelandscape 2s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes movelandscape {
+    0% { margin-top: -500px }
+    100% { margin-top: 0px }
+}
