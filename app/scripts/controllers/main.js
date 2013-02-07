@@ -1,7 +1,6 @@
 'use strict';
 
 dployApp.controller('MainCtrl', ['$scope', '$document', function ($scope, $document) {
-    console.log(document.getElementById('filereader'));
 
 
     var holder = document.getElementById('dropZone'),

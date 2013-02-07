@@ -61,6 +61,7 @@ module.exports = function( grunt ) {
           'app/*.html',
           'app/styles/**/*.css',
           'app/scripts/**/*.js',
+          'app/scripts/**/*.html',
           'app/views/**/*.html',
           'app/images/**/*'
         ],
