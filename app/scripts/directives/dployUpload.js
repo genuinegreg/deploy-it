@@ -17,20 +17,32 @@
                     dnd:'draggable' in document.createElement('span'),
                     formdata:!!window.FormData,
                     progress:"upload" in new XMLHttpRequest()
-                }
+                };
 
                 var supportAlert = {
                     filereader:element.find('.filereaderalert'),
                     formdata:element.find('.formdataalert'),
                     progress:element.find('.progressalert')
-                }
+                };
 
-                if (tests.filereader) supportAlert.filereader.addClass('hide');
-                else supportAlert.filereader.addClass('fail')
-                if (tests.formdata) supportAlert.formdata.addClass('hide');
-                else supportAlert.formdata.addClass('fail');
-                if (tests.progress) supportAlert.progress.addClass('hide');
-                else supportAlert.progress.addClass('fail');
+                if (tests.filereader) {
+                    supportAlert.filereader.addClass('hide');
+                }
+                else {
+                    supportAlert.filereader.addClass('fail');
+                }
+                if (tests.formdata) {
+                    supportAlert.formdata.addClass('hide');
+                }
+                else {
+                    supportAlert.formdata.addClass('fail');
+                }
+                if (tests.progress) {
+                    supportAlert.progress.addClass('hide');
+                }
+                else {
+                    supportAlert.progress.addClass('fail');
+                }
 
                 if (tests.dnd) {
 
@@ -89,7 +101,7 @@
                 else {
 
                     // FIXME: fix dnd support warning.
-                    alert('No drag and drop !');
+                    window.alert('No drag and drop !');
                 }
 
 

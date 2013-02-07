@@ -1,6 +1,6 @@
 
 var conf  = {
     http: {
-        host: "./"
+        host: "http://127.0.0.1:3000/"
     }
-}
+};

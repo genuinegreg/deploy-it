@@ -42,4 +42,4 @@ exports.handle = function handle(file, cb) {
         });
 
 
-}
+};

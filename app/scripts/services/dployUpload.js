@@ -15,7 +15,7 @@
                 var tests = {
                     formdata:!!window.FormData,
                     progress:"upload" in new XMLHttpRequest()
-                }
+                };
                 var formData = tests.formdata ? new FormData() : null;
 
                 if (files.length < 1) {
@@ -34,14 +34,16 @@
                     xhr.open('POST', conf.http.host + 'upload');
 
                     xhr.onload = function (xhr) {
-                        var response = JSON.parse( xhr.currentTarget.response);
+                        var response = JSON.parse(xhr.currentTarget.response);
                         callback(undefined, response.hash);
                     };
 
                     if (tests.progress) {
                         xhr.upload.onprogress = function (event) {
                             if (event.lengthComputable) {
-                                var progress = (event.loaded / event.total * 100 | 0);
+                                var progress = (event.loaded / event.total * 100);
+                                progress = (progress <= 100 && progress >= 0) ? progress : 0;
+
                                 callback(progress, undefined);
                             }
                         };
@@ -52,7 +54,7 @@
 
                 }
             }
-        }
+        };
     });
 
 
