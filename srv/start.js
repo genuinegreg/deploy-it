@@ -10,13 +10,13 @@ var mkdirp = require('mkdirp');
 
 
 if (!fs.exists(conf.paths.upload)) {
-    mkdirp(conf.paths.upload);
+    mkdirp.sync(conf.paths.upload);
 }
 if (!fs.exists(conf.paths.unzip)) {
-    mkdirp(conf.paths.unzip);
+    mkdirp.sync(conf.paths.unzip);
 }
 if (!fs.exists(conf.paths.data)) {
-    mkdirp(conf.paths.data);
+    mkdirp.sync(conf.paths.data);
 }
 
 
