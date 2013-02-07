@@ -6,18 +6,20 @@
 
         <div class="airplane">
             <img src="img/icon_airplane.png"/>
-            <h4>Uploading...</h4>
+            <h4>Uploading... {{progress}}</h4>
         </div>
 
         <div class="drop">
             <img src="img/icon_drop.png"/>
             <h4>Drop you file here </h4>
 
-            <p id="filereader">File API &amp; FileReader API not supported</p>
 
-            <p id="formdata">XHR2's FormData is not supported</p>
+            <p class="filereaderalert fail"> File API &amp; FileReader API not supported </p>
 
-            <p id="progress">XHR2's upload progress isn't supported</p>
+            <p class="formdataalert"> XHR2's FormData is not supported </p>
+
+            <p class="progressalert"> XHR2's upload progress isn't supported </p>
+
         </div>
     </div>
 </div>
