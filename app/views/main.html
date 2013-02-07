@@ -1,19 +1,7 @@
+<header ng-include="'views/common/header.html'">
+</header>
+
 <header>
-    <div class="container fixed">
-        <div class="row">
-            <div id="logo" class="span4">
-                <img src="./img/logo.png" />
-                <span class="baseline">Fast beta app deployment</span>
-            </div>
-            <ul id="menu" class="span8">
-                <li><a class="btn btn-primary">Subscribe</a></li>
-                <li><a class="btn btn-link">Offers</a></li>
-                <li><a class="btn btn-link">About</a></li>
-                <li><a class="btn btn-link">Contact</a></li>
-            </ul>
-        </div>
-        <br/>
-    </div>
 
     <div class="focus">
         <div class="dropzone">
@@ -90,35 +78,5 @@
 
 </div> <!-- /container -->
 
-<footer>
-    <div class="container fixed">
-        <div class="row">
-            <div class="span4">
-                <h1>About</h1>
-                <h2>Subtitle</h2>
-                <ul>
-                    <li>Donec sed odio </li>
-                    <li>Euismod semper</li>
-                    <li>Donec sed odio dui. Cras justo odio, dapibus ac facilisis</li>
-                </ul>
-            </div>
-            <div class="span4">
-                <h1>&nbsp;</h1>
-                <h2>Subtitle</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in.
-                <ul>
-                    <li>Donec sed odio </li>
-                    <li>Euismod semper</li>
-                </ul>
-                </p>
-            </div>
-            <div class="span4">
-                <h1>Contact us</h1>
-                <h2>Subtitle</h2>
-                <p>Email us at <a href="">contact@dploy.io</a><br/>
-                    Follow us on twitter <a href="">@dploy</a></p>
-                <p>&copy; 2013 <a href="">www.dploy.io</a></p>
-            </div>
-        </div>
-    </div>
+<footer ng-include="'views/common/footer.html'">
 </footer>
