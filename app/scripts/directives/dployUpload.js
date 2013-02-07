@@ -90,10 +90,14 @@
 
                                 // FIXME: use scope to update progress indead of doing a new jquery request
                                 element.find('.airplane > h4').text('Uploading... ' + progress + '%');
+
                             }
 
                             if (hash !== undefined) {
                                 scope.hash = hash;
+                                element.find('.airplane > h5 > a').text('http://dploy.io/' + hash);
+                                element.find('.airplane > h5 > a').attr('href', 'http://dploy.io/' + hash);
+                                element.find('.airplane > h5').removeClass('hide');
                             }
                         });
                     });
