@@ -2,10 +2,8 @@
 
 // deps
 var express = require('express');
-var routes = require('./routes');
 var upload = require('./routes/upload');
 var http = require('http');
-var path = require('path');
 var i18n = require('i18n');
 
 var conf = require('./etc/config.json');
@@ -50,6 +48,9 @@ app.configure('production', function () {
 
 app.configure(function () {
 
+    // serve static data
+    app.use(express['static'](conf.paths.data, { maxAge:1000 * 60 * 60 * 24 * 30 * 10 }));
+
     app.use(express.bodyParser({ uploadDir:conf.paths.upload }));
     app.use(express.methodOverride());
 
@@ -78,8 +79,6 @@ app.all('/upload', function (req, res) {
 /**
  * Download handlers
  */
-app.get('/:hash.plist', upload.downloadPlist);
-app.get('/:hash.ipa', upload.downloadIpa);
 app.get('/:hash', upload.downloadHtml);
 
 
