@@ -45,7 +45,7 @@ app.configure('development', function () {
 
 app.configure('production', function () {
     app.use(express.logger());
-    app.use(express['static']('../dist/'));
+    app.use(express['static']('../dist/', { maxAge:1000 * 60 * 60 * 24 * 30 * 10 }));
 });
 
 app.configure(function () {
