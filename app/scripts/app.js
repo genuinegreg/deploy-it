@@ -1,7 +1,7 @@
 
 'use strict';
 
-var deployitApp = angular.module('deployitApp', [])
+var dployApp = angular.module('dployApp', [])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {

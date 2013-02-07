@@ -1,6 +1,6 @@
 'use strict';
 
-deployitApp.controller('MainCtrl', ['$scope', '$document', function ($scope, $document) {
+dployApp.controller('MainCtrl', ['$scope', '$document', function ($scope, $document) {
     console.log(document.getElementById('filereader'));
 
 
