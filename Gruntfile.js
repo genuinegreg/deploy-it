@@ -118,16 +118,19 @@ module.exports = function (grunt) {
         // during the copy process.
 
         // concat css/**/*.css files, inline @import, output a single minified css
-        css:{
-            'styles/main.css':['styles/**/*.css']
-        },
+//        css:{
+//            'styles/main.css':['styles/*.css']
+//        },
 
         // renames JS/CSS to prepend a hash of their contents for easier
         // versioning
         rev:{
             js:'scripts/**/*.js',
             css:'styles/**/*.css',
-            // img:['img/**/*.jpg', 'img/**/*.png', 'ico/*.png']
+            img:['img/**/*.jpg', 'img/**/*.png', 'ico/*.png']
+            js:'scripts/scripts.js',
+            css:'styles/styles.css',
+            // img:['img/**/*.jpg', 'img/**/*.png', 'ico/*.png', 'styles/img/*.png', 'styles/img/*.jpg']
             img:['image/**/*.jpg', 'image/**/*.png']
         },
 
@@ -140,7 +143,8 @@ module.exports = function (grunt) {
         // update references in HTML/CSS to revved files
         usemin:{
             html:['*.html', 'views/*.html', 'views/common/*.html', 'scripts/directives/*.html'],
-            css:['styles/*.css']
+            css:['styles/*.styles.css'],
+            js:['scripts/*.scripts.js']
         },
 
         // HTML minification
