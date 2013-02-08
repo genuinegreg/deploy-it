@@ -1,6 +1,7 @@
 'use strict';
 
-dployApp.controller('MainCtrl', ['$scope', '$document', function ($scope, $document) {
+dployApp.controller('MainCtrl', ['$scope', '$routeParams', function ($scope, $routeParams) {
+    $scope.hash = $routeParams.hash;
 
 }]);
 

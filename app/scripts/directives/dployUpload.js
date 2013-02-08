@@ -64,9 +64,11 @@
                         element.toggleClass('uploading');
                         element.toggleClass('in');
 
+
                         e.preventDefault();
 
                         console.log('target : ' + e.target);
+
                         console.log(e);
 
                         var files = e.originalEvent.dataTransfer.files;

@@ -1,0 +1,31 @@
+<header class="container fixed">
+    <div id="logo" class="span4">
+        <img src="img/logo.png" width="219px" height="120px"/>
+        <span class="baseline">Fast beta app deployment</span>
+    </div>
+</header>
+<header>
+    <div class="focus">
+        <div class="container">
+            <p>App : {{hash}}</p>
+
+            <p>By : porta gravida</p>
+
+            <h2>
+                <center>Click to install</center>
+            </h2>
+            <a class="btn btn-large btn-block btn-info"
+               ng-href="itms-services://?action=download-manifest&url=///#{{hash}}.plist">Install app</a>
+        </div>
+    </div>
+</header>
+
+<div class="container fixed">
+    <section ng-include="'views/common/info.html'">
+    </section>
+
+</div> <!-- /container -->
+
+
+<footer ng-include="'views/common/footer.html'">
+</footer>
