@@ -60,9 +60,9 @@
 
 
 
-                        var dropzone = element.children('.dropzone');
-                        dropzone.toggleClass('uploading');
-                        dropzone.toggleClass('in');
+                        // var dropzone = element.children('.dropzone');
+                        element.toggleClass('uploading');
+                        element.toggleClass('in');
 
                         e.preventDefault();
 
@@ -95,11 +95,11 @@
                                 scope.hash = hash;
                                 var inputDl = element.find('input.build_link')
 
-                                inputDl.value('http://dploy.io/' + hash);
+                                inputDl.val('http://dploy.io/#/' + hash);
                                 inputDl.focus();
                                 inputDl.select();
 
-                                dropzone.toggleClass('finished');
+                                element.toggleClass('finished');
                             }
                         });
                     });
