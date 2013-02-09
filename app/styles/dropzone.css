@@ -108,10 +108,10 @@
     100% {margin-top: 120px;opacity: 1;}
 }
 .finished .airplane {
-    -webkit-animation: exitairplane 0.3s ease-in-out forwards;
-    -moz-animation: exitairplane 0.3s ease-in-out forwards;
-    -o-animation: exitairplane 0.3s ease-in-out forwards;
-    animation: exitairplane 0.3s ease-in-out forwards;
+    -webkit-animation: exitairplane 0.5s ease-in-out forwards;
+    -moz-animation: exitairplane 0.5s ease-in-out forwards;
+    -o-animation: exitairplane 0.5s ease-in-out forwards;
+    animation: exitairplane 0.5s ease-in-out forwards;
 }
 @-webkit-keyframes exitairplane {
     0% {margin-top: 120px; opacity: 1;}
@@ -135,17 +135,17 @@
     font-size: 19px;
 }
 .finished .parachute {
-    -webkit-animation: enterparachute 0.5s ease-in-out forwards;
-    -moz-animation: enterparachute 0.5s ease-in-out forwards;
-    -o-animation: enterparachute 0.5s ease-in-out forwards;
-    animation: enterparachute 0.5s ease-in-out forwards;
+    -webkit-animation:1s enterparachute 0.3s ease-in-out forwards;
+    -moz-animation:1s enterparachute 0.3s ease-in-out forwards;
+    -o-animation:1s enterparachute 0.3s ease-in-out forwards;
+    animation:1s enterparachute 0.3s ease-in-out forwards;
 }
 @-webkit-keyframes enterparachute {
-    0% {margin-top: 0px;opacity: 0;}
+    0% {margin-top: 0px;}
     100% {margin-top: 50px;opacity: 1;}
 }
 @keyframes enterparachute {
-    0% {margin-top: 0px;opacity: 0;}
+    0% {margin-top: 0px;}
     100% {margin-top: 50px;opacity: 1;}
 }
 /*-------------------------------------------------*\
@@ -156,30 +156,56 @@
 .city { margin-top: -500px;position: absolute}
 /* Trees */
 .uploading .trees {
-    -webkit-animation: movelandscape 1s ease-in-out forwards;
-    -moz-animation: movelandscape 1s ease-in-out forwards;
-    -o-animation: movelandscape 1s ease-in-out forwards;
-    animation: movelandscape 1s ease-in-out forwards;
+    -webkit-animation: gotowardsky 1s ease-in-out forwards;
+    -moz-animation: gotowardsky 1s ease-in-out forwards;
+    -o-animation: gotowardsky 1s ease-in-out forwards;
+    animation: gotowardsky 1s ease-in-out forwards;
+}
+.finished .trees {
+    -webkit-animation: gotowardearth 16s ease-in-out forwards;
+    -moz-animation: gotowardearth 16s ease-in-out forwards;
+    -o-animation: gotowardearth 16s ease-in-out forwards;
+    animation: gotowardearth 16s ease-in-out forwards;
 }
 /* Houses */
 .uploading .houses {
-    -webkit-animation: movelandscape 1.4s ease-in-out forwards;
-    -moz-animation: movelandscape 1.4s ease-in-out forwards;
-    -o-animation: movelandscape 1.4s ease-in-out forwards;
-    animation: movelandscape 1.4s ease-in-out forwards;
+    -webkit-animation: gotowardsky 1.4s ease-in-out forwards;
+    -moz-animation: gotowardsky 1.4s ease-in-out forwards;
+    -o-animation: gotowardsky 1.4s ease-in-out forwards;
+    animation: gotowardsky 1.4s ease-in-out forwards;
+}
+.finished .houses {
+    -webkit-animation: gotowardearth 14s ease-in-out forwards;
+    -moz-animation: gotowardearth 14s ease-in-out forwards;
+    -o-animation: gotowardearth 14s ease-in-out forwards;
+    animation: gotowardearth 14s ease-in-out forwards;
 }
 /* City */
 .uploading .city {
-    -webkit-animation: movelandscape 2s ease-in-out forwards;
-    -moz-animation: movelandscape 2s ease-in-out forwards;
-    -o-animation: movelandscape 2s ease-in-out forwards;
-    animation: movelandscape 2s ease-in-out forwards;
+    -webkit-animation: gotowardsky 2s ease-in-out forwards;
+    -moz-animation: gotowardsky 2s ease-in-out forwards;
+    -o-animation: gotowardsky 2s ease-in-out forwards;
+    animation: gotowardsky 2s ease-in-out forwards;
 }
-@-webkit-keyframes movelandscape {
+.finished .city {
+    -webkit-animation: gotowardearth 12s ease-in-out forwards;
+    -moz-animation: gotowardearth 12s ease-in-out forwards;
+    -o-animation: gotowardearth 12s ease-in-out forwards;
+    animation: gotowardearth 12s ease-in-out forwards;
+}
+@-webkit-keyframes gotowardsky {
     0% { margin-top: -500px }
     100% { margin-top: 0px }
 }
-@keyframes movelandscape {
+@keyframes gotowardsky {
     0% { margin-top: -500px }
     100% { margin-top: 0px }
+}
+@-webkit-keyframes gotowardearth {
+    0% { margin-top: 0px }
+    100% { margin-top: -500px }
+}
+@keyframes gotowardearth {
+    0% { margin-top: 0px }
+    100% { margin-top: -500px }
 }
