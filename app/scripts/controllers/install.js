@@ -1,7 +1,8 @@
+(function() {
+	'use strict';
 
-'use strict';
+	dployApp.controller('InstallCtrl',['$scope', '$routeParams', function ($scope, $routeParams) {
+		$scope.hash = $routeParams.hash;
+	}]);
 
-dployApp.controller('InstallCtrl',['$scope', '$routeParams', function ($scope, $routeParams) {
-    $scope.hash = $routeParams.hash;
-}]);
-
+})()
