@@ -60,15 +60,13 @@
 
 
 
-                        var animation = element.children('#animation');
-                        animation.toggleClass('animated');
-                        animation.toggleClass('hover');
-
+                        var dropzone = element.children('.dropzone');
+                        dropzone.toggleClass('uploading');
+                        dropzone.toggleClass('in');
 
                         e.preventDefault();
 
                         console.log('target : ' + e.target);
-
                         console.log(e);
 
                         var files = e.originalEvent.dataTransfer.files;
@@ -95,9 +93,13 @@
 
                             if (hash !== undefined) {
                                 scope.hash = hash;
-                                element.find('.airplane > h5 > a').text('http://dploy.io/' + hash);
-                                element.find('.airplane > h5 > a').attr('href', 'http://dploy.io/' + hash);
-                                element.find('.airplane > h5').removeClass('hide');
+                                var inputDl = element.find('input.build_link')
+
+                                inputDl.value('http://dploy.io/' + hash);
+                                inputDl.focus();
+                                inputDl.select();
+
+                                dropzone.toggleClass('finished');
                             }
                         });
                     });

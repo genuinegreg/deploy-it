@@ -1,26 +1,28 @@
+
 <div class="dropzone">
-    <div id="animation">
-        <img class="img city" src="img/landscape/1_city.jpg" width="940px" height="940px"/>
-        <img class="img houses" src="img/landscape/2_houses.png" width="940px" height="940px"/>
-        <img class="img trees" src="img/landscape/3_trees.png" width="940px" height="940px"/>
+  <div id="animation">
+    <img class="city" src="img/landscape/1_city.png"/>
+    <img class="houses" src="img/landscape/2_houses.png"/>
+    <img class="trees" src="img/landscape/3_trees.png"/>
 
-        <div class="airplane">
-            <img src="img/icon_airplane.png" width="72px" height="72px"/>
-            <h4>Uploading... {{progress}}</h4>
-            <h5 class="hide"><a ng-href="http://dploy.it/{{hash}}"></a></h5>
-        </div>
-
-        <div class="drop">
-            <img src="img/icon_drop.png" width="72px" height="72px"/>
-            <h4>Drop you file here </h4>
-
-
-            <p class="filereaderalert fail"> File API &amp; FileReader API not supported </p>
-
-            <p class="formdataalert"> XHR2's FormData is not supported </p>
-
-            <p class="progressalert"> XHR2's upload progress isn't supported </p>
-
-        </div>
+    <div class="drop">
+        <img src="img/icon_drop.png"/>
+        <h4>Drop you file here </h4>
     </div>
+
+    <div class="airplane">
+        <img src="img/icon_airplane.png"/>
+        <h4>Uploading... </h4>
+    </div>
+
+    <div class="parachute">
+        <img src="img/icon_parachute.png"/>
+        <input type="text" id="build_link" value="http://dploy.io/123456" />
+    </div>
+
+    <p class="filereaderalert fail"> File API &amp; FileReader API not supported </p>
+    <p class="formdataalert"> XHR2's FormData is not supported </p>
+    <p class="progressalert"> XHR2's upload progress isn't supported </p>
+
+  </div>
 </div>

@@ -7,13 +7,16 @@
     border: 3px dashed rgba(255,255,255,0.2);
     border-radius: 4px;
     margin: 0 auto;
-    -webkit-transition: border 0.3s ease-in-out;
-}
 
+    -webkit-transition: border 0.3s ease-in-out;
+    -moz-transition: border 0.3s ease-in-out;
+    -ms-transition: border 0.3s ease-in-out;
+    -o-transition: border 0.3s ease-in-out;
+    transition: border 0.3s ease-in-out;
+}
 .dropzone.in{
     border: 3px dashed rgba(255,255,255,0.9);
 }
-
 #animation {
     width: 940px;
     height: 440px;
@@ -21,9 +24,11 @@
     position: relative;
     overflow: hidden;
     opacity: 1;
-    
 }
-
+/*-------------------------------------------------*\
+ *  Foreground
+ *-------------------------------------------------*/
+/* Drop */
 .drop {
     position: absolute;
     margin: 120px 350px;
@@ -35,6 +40,45 @@
     font-size: 20px;
     color: #dcdacb;
 }
+.uploading .drop {
+    -webkit-animation: exitdrop 0.3s ease-in forwards;
+    -moz-animation: exitdrop 0.3s ease-in forwards;
+    -o-animation: exitdrop 0.3s ease-in forwards;
+    animation: exitdrop 0.3s ease-in forwards;
+}
+@-webkit-keyframes exitdrop {
+    0% {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        opacity : 1;
+    }
+    100% {
+        -webkit-transform: scale(1.3);
+        -moz-transform: scale(1.3);
+        -ms-transform: scale(1.3);
+        -o-transform: scale(1.3);
+        opacity : 0;
+    }
+}
+@keyframes exitdrop {
+    0% {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        opacity : 1;
+    }
+    100% {
+        -webkit-transform: scale(1.3);
+        -moz-transform: scale(1.3);
+        -ms-transform: scale(1.3);
+        -o-transform: scale(1.3);
+        opacity : 0;
+    }
+}
+/* Airplane */
 .airplane {
     position: absolute;
     margin: 300px 350px;
@@ -47,67 +91,95 @@
     font-size: 20px;
     color: #276f87;
 }
-.img {
-    position: absolute
+.uploading .airplane {
+    -webkit-animation: launchairplane 2s ease-in-out forwards;
+    -moz-animation: launchairplane 2s ease-in-out forwards;
+    -o-animation: launchairplane 2s ease-in-out forwards;
+    animation: launchairplane 2s ease-in-out forwards;
 }
+@-webkit-keyframes launchairplane {
+    0% {margin-top: 200px; opacity: 0;}
+    66% { opacity: 1;}
+    100% {margin-top: 120px;opacity: 1;}
+}
+@keyframes launchairplane {
+    0% {margin-top: 200px; opacity: 0;}
+    66% { opacity: 1;}
+    100% {margin-top: 120px;opacity: 1;}
+}
+.finished .airplane {
+    -webkit-animation: exitairplane 0.3s ease-in-out forwards;
+    -moz-animation: exitairplane 0.3s ease-in-out forwards;
+    -o-animation: exitairplane 0.3s ease-in-out forwards;
+    animation: exitairplane 0.3s ease-in-out forwards;
+}
+@-webkit-keyframes exitairplane {
+    0% {margin-top: 120px; opacity: 1;}
+    100% {margin-top: 0px;opacity: 0;}
+}
+@keyframes exitairplane {
+    0% {margin-top: 120px; opacity: 1;}
+    100% {margin-top: 0px;opacity: 0;}
+}
+/* parachute */
+.parachute {
+    position: absolute;
+    margin: 50px 350px;
+    width: 200px;
+    text-align: center;
+    opacity: 0;
+}
+.parachute input{
+    margin-top : 20px;
+    height:30px;
+    font-size: 19px;
+}
+.finished .parachute {
+    -webkit-animation: enterparachute 0.5s ease-in-out forwards;
+    -moz-animation: enterparachute 0.5s ease-in-out forwards;
+    -o-animation: enterparachute 0.5s ease-in-out forwards;
+    animation: enterparachute 0.5s ease-in-out forwards;
+}
+@-webkit-keyframes enterparachute {
+    0% {margin-top: 0px;opacity: 0;}
+    100% {margin-top: 50px;opacity: 1;}
+}
+@keyframes enterparachute {
+    0% {margin-top: 0px;opacity: 0;}
+    100% {margin-top: 50px;opacity: 1;}
+}
+/*-------------------------------------------------*\
+ *  Landscape
+ *-------------------------------------------------*/
 .trees,
 .houses,
-.city { margin-top: -500px }
-
-/*-------------------------------------------------*\
- *  foreground Animations
- *-------------------------------------------------*/
-.animated .drop {
-    -webkit-animation: drop 0.3s ease-in;
-    -webkit-animation-fill-mode: forwards;
-}
-@-webkit-keyframes drop {
-    0% {
-        -webkit-transform: scale(1);
-        opacity : 1;
-    }
-    100% {
-        -webkit-transform: scale(1.3);
-        opacity : 0;
-    }
-}
-
-.animated .airplane {
-    -webkit-animation: launchairplane 2s ease-in-out;
-    -webkit-animation-fill-mode: forwards;
-}
-
-@-webkit-keyframes launchairplane {
-    0% {
-        margin-top: 200px;
-        opacity: 0;
-    }
-    66% { opacity: 1;}
-    100% {
-        margin-top: 120px;
-        opacity: 1;
-    }
-}
-
-/*-------------------------------------------------*\
- *  Landscape Animations
- *-------------------------------------------------*/
-
+.city { margin-top: -500px;position: absolute}
 /* Trees */
-.animated .trees {
-    -webkit-animation: movelandscape 1s ease-in-out;
-    -webkit-animation-fill-mode: forwards;
+.uploading .trees {
+    -webkit-animation: movelandscape 1s ease-in-out forwards;
+    -moz-animation: movelandscape 1s ease-in-out forwards;
+    -o-animation: movelandscape 1s ease-in-out forwards;
+    animation: movelandscape 1s ease-in-out forwards;
 }
 /* Houses */
-.animated .houses {
-    -webkit-animation: movelandscape 1.4s ease-in-out;
-    -webkit-animation-fill-mode: forwards;
+.uploading .houses {
+    -webkit-animation: movelandscape 1.4s ease-in-out forwards;
+    -moz-animation: movelandscape 1.4s ease-in-out forwards;
+    -o-animation: movelandscape 1.4s ease-in-out forwards;
+    animation: movelandscape 1.4s ease-in-out forwards;
 }
-.animated .city {
-    -webkit-animation: movelandscape 2s ease-in-out;
-    -webkit-animation-fill-mode: forwards;
+/* City */
+.uploading .city {
+    -webkit-animation: movelandscape 2s ease-in-out forwards;
+    -moz-animation: movelandscape 2s ease-in-out forwards;
+    -o-animation: movelandscape 2s ease-in-out forwards;
+    animation: movelandscape 2s ease-in-out forwards;
 }
 @-webkit-keyframes movelandscape {
+    0% { margin-top: -500px }
+    100% { margin-top: 0px }
+}
+@keyframes movelandscape {
     0% { margin-top: -500px }
     100% { margin-top: 0px }
 }
