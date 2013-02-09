@@ -5,4 +5,4 @@
 		$scope.hash = $routeParams.hash;
 	}]);
 
-})()
+})();

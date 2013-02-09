@@ -44,7 +44,7 @@
                                 var progress = (event.loaded / event.total * 100);
                                 progress = (progress <= 100 && progress >= 0) ? progress : 0;
 
-                                callback(parseInt(progress), undefined);
+                                callback(parseInt(progress, 10), undefined);
                             }
                         };
                     }
