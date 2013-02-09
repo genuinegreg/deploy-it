@@ -7,6 +7,7 @@ Dependency
  * [yeoman](http://yeoman.io/)
  * [nodejs](http://nodejs.org/) (branche 0.8)
 
+
 Tests & prod
 ----------------
 
