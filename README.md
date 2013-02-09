@@ -1,6 +1,6 @@
 ﻿DeployIt
 
-Dependancy
+Dependency
 ------------
 
  * [forever](https://github.com/nodejitsu/forever)
@@ -13,7 +13,7 @@ Tests & prod
 ### Dev
 
 Modifier le fichier app/scripts/conf.js
-    
+
     http.host = 'http://127.0.0.1:3000'
 
 cmd1
