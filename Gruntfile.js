@@ -126,7 +126,7 @@ module.exports = function (grunt) {
         // versioning
         rev:{
             js:'scripts/scripts.js',
-            css:'styles/styles.css',
+            css:['styles/styles.min.css', 'styles/bootstrap.min.css'],
             // img:['img/**/*.jpg', 'img/**/*.png', 'ico/*.png', 'styles/img/*.png', 'styles/img/*.jpg']
             img:['image/**/*.jpg', 'image/**/*.png']
         },
@@ -140,7 +140,7 @@ module.exports = function (grunt) {
         // update references in HTML/CSS to revved files
         usemin:{
             html:['*.html', 'views/*.html', 'views/common/*.html', 'scripts/directives/*.html'],
-            css:['styles/*.styles.css'],
+            css:['styles/*.styles.min.css', 'styles/*.bootstrap.min.css'],
             js:['scripts/*.scripts.js']
         },
 
