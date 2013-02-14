@@ -101,7 +101,7 @@ exports.handle = function handle(file, cb) {
                             'assets':[
                                 {
                                     'kind':'software-package',
-                                    'url':'./' + hash + '.ipa'
+                                    'url': conf.http.root + hash + '.ipa'
                                 }
                             ],
                             metadata:{

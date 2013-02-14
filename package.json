@@ -19,6 +19,6 @@
     "murmurhash3": "~0.1.4",
     "mkdirp": "~0.3.4",
     "synchronize": "~0.5.2",
-    "plist": "~0.4.2"
+    "plist": "git://github.com/genuinegreg/node-plist.git"
   }
 }

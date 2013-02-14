@@ -97,7 +97,7 @@
                                 scope.hash = hash;
                                 var inputDl = element.find('input.build_link')
 
-                                inputDl.val('http://dploy.io/#/' + hash);
+                                inputDl.val('http://dploy.plop.io/#/' + hash);
                                 inputDl.focus();
                                 inputDl.select();
 
