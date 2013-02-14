@@ -1,0 +1,12 @@
+<header ng-include="'views/common/header.html'">
+</header>
+
+<div class="container fixed">
+	<ul ng-repeat="app in apps">
+		<li><strong>{{app}}</strong> : <a ng-href="http://dploy.plop.io/#/{{app}}">http://dploy.plop.io/#/{{app}}</a>
+	</ul>
+
+</div> <!-- /container -->
+
+<footer ng-include="'views/common/footer.html'">
+</footer>
