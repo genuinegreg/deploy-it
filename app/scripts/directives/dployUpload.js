@@ -1,119 +1,121 @@
-(function () {
+(function() {
     'use strict';
 
-    dployApp.directive('dployUpload', ['dployUpload', function (dployUpload) {
-        return {
-            templateUrl:'scripts/directives/dployUpload.html',
-            restrict:'A',
-            replace:true,
-            link:function postLink(scope, element, attrs) {
+    dployApp.directive('dployUpload', ['dployUpload', '$document', function(dployUpload, $document) {
 
-                scope.progress = '0%';
+        function postLink(scope, element, attrs) {
+            scope.progress = '0%';
+            scope.hash = false;
 
-                //FIXME: Use ModernizR for browser feature check.
+            // FIXME: Use ModernizR for browser feature check.
+            var tests = {
+                filereader: typeof FileReader !== 'undefined',
+                dnd: 'draggable' in document.createElement('span'),
+                formdata: !! window.FormData,
+                progress: "upload" in new XMLHttpRequest()
+            };
 
-                var tests = {
-                    filereader:typeof FileReader !== 'undefined',
-                    dnd:'draggable' in document.createElement('span'),
-                    formdata:!!window.FormData,
-                    progress:"upload" in new XMLHttpRequest()
-                };
+            var supportAlert = {
+                filereader: element.find('.filereaderalert'),
+                formdata: element.find('.formdataalert'),
+                progress: element.find('.progressalert')
+            };
 
-                var supportAlert = {
-                    filereader:element.find('.filereaderalert'),
-                    formdata:element.find('.formdataalert'),
-                    progress:element.find('.progressalert')
-                };
+            if(tests.filereader) {
+                supportAlert.filereader.addClass('hide');
+            } else {
+                supportAlert.filereader.addClass('fail');
+            }
+            if(tests.formdata) {
+                supportAlert.formdata.addClass('hide');
+            } else {
+                supportAlert.formdata.addClass('fail');
+            }
+            if(tests.progress) {
+                supportAlert.progress.addClass('hide');
+            } else {
+                supportAlert.progress.addClass('fail');
+            }
 
-                if (tests.filereader) {
-                    supportAlert.filereader.addClass('hide');
-                }
-                else {
-                    supportAlert.filereader.addClass('fail');
-                }
-                if (tests.formdata) {
-                    supportAlert.formdata.addClass('hide');
-                }
-                else {
-                    supportAlert.formdata.addClass('fail');
-                }
-                if (tests.progress) {
-                    supportAlert.progress.addClass('hide');
-                }
-                else {
-                    supportAlert.progress.addClass('fail');
-                }
+            if(tests.dnd) {
 
-                if (tests.dnd) {
+                console.log('dnd ok, init dnd events...');
+                $document.bind('dragover', function() {
+                    element.addClass('in');
+                    return false;
+                });
 
-                    console.log('dnd ok, init dnd events...');
-                    $(document).bind('dragover', function () {
-                        element.addClass('in');
-                        return false;
-                    });
-                    element.bind('dragend', function () {
+                var endDrag = function() {
                         element.removeClass('in');
                         return false;
-                    });
-                    element.bind('drop', function (e) {
-                        element.removeClass('in');
+                    };
+                $document.bind('dragleave', endDrag);
+                $document.bind('dragend', endDrag);
+                $document.bind('drop', function(e) {
+                    // prevent dnd default
+                    e.preventDefault();
+
+                    // if drop is not in dropzone elements
+                    if($(e.target).closest(element).length < 1) {
+                        return false;
+                    }
+
+                    // update css
+                    element.removeClass('in');
+                    element.addClass('uploading');
+
+                    // get droped files
+                    var files = e.originalEvent.dataTransfer.files;
+
+                    // ugly hack to prevent multiupload
+                    if(files.length !== 1) {
+                        console.log('Upload just ONE file.');
+                        // FIXME: alert use when he's droping multiple files
+                        return;
+                    }
 
 
+                    // upload with dployUplaod service
+                    dployUpload.upload(files, function(progress, hash) {
 
-                        // var dropzone = element.children('.dropzone');
-                        element.toggleClass('uploading');
-                        element.toggleClass('in');
-
-
-                        e.preventDefault();
-
-                        console.log('target : ' + e.target);
-
-                        console.log(e);
-
-                        var files = e.originalEvent.dataTransfer.files;
-
-                        if (files.length !== 1) {
-                            console.log('Upload just ONE file.');
-                            return;
+                        // update progress info
+                        if(progress !== undefined) {
+                            console.log('update scope.progress to ' + progress);
+                            scope.progress = progress;
+                            scope.$digest();
                         }
 
-                        console.log('send files...');
+                        // display download link
+                        if(hash !== undefined) {
 
-                        dployUpload.upload(files, function(progress, hash) {
+                            scope.hash = hash;
+                            scope.link = conf.http.host +'#/' + hash;
+                            scope.$digest();
 
-                            console.log('[progress:' + progress + ' , hash:' + hash + ']');
+                            var inputDl = element.find('.build_link');
 
-                            if (progress !== undefined) {
-                                console.log('update scope.progress to ' + progress);
-                                scope.progress = progress + '%';
+                            inputDl.val('http://dploy.io/#/' + hash);
+                            inputDl.focus();
+                            inputDl.select();
 
-                                // FIXME: use scope to update progress indead of doing a new jquery request
-                                element.find('.airplane > h4').text('Uploading... ' + progress + '%');
-
-                            }
-
-                            if (hash !== undefined) {
-                                scope.hash = hash;
-                                var inputDl = element.find('input.build_link')
-
-                                inputDl.val('http://dploy.plop.io/#/' + hash);
-                                inputDl.focus();
-                                inputDl.select();
-
-                                element.toggleClass('finished');
-                            }
-                        });
+                            element.addClass('finished');
+                        }
                     });
-                }
-                else {
+                });
+            } else {
 
-                    // FIXME: fix dnd support warning.
-                    window.alert('No drag and drop !');
-                }
-
-
+                // FIXME: fix dnd support warning.
+                window.alert('No drag and drop !');
             }
+        }
+
+        return {
+            templateUrl: 'scripts/directives/dployUpload.html',
+            restrict: 'A',
+            replace: true,
+            // scope: {},
+            transclude: true,
+            link: postLink
         };
     }]);
 
