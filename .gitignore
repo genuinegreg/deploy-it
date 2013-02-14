@@ -2,5 +2,6 @@ dist
 temp
 node_modules
 uploads
+*.orig
 .idea
 *.*~
