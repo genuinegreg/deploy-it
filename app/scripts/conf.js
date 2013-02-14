@@ -1,6 +1,5 @@
-
-var conf  = {
-    http: {
-        host: "./"
-    }
+var conf = {
+	http: {
+		host: "./"
+	}
 };

@@ -10,7 +10,7 @@ var conf = require('./etc/config.json');
 
 // config i18n
 i18n.configure({
-    locales:['en', 'fr']
+    locales: ['en', 'fr']
 });
 
 
@@ -19,11 +19,11 @@ var app = express();
 
 // config i18n helpers
 app.locals({
-    __:i18n.__,
-    __n:i18n.__n
+    __: i18n.__,
+    __n: i18n.__n
 });
 
-app.configure(function () {
+app.configure(function() {
 
     app.set('port', process.env.PORT || conf.http.port);
     app.set('views', __dirname + '/views');
@@ -32,26 +32,32 @@ app.configure(function () {
     app.use(express.favicon());
 });
 
-app.configure('development', function () {
+app.configure('development', function() {
     app.use(express.logger('dev'));
-    app.use(function (req, res, next) {
+    app.use(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
         next();
     });
     app.use(express['static']('../app/'));
 });
 
-app.configure('production', function () {
+app.configure('production', function() {
     app.use(express.logger());
-    app.use(express['static']('../dist/', { maxAge:1000 * 60 * 60 * 24 * 30 * 10 }));
+    app.use(express['static']('../dist/', {
+        maxAge: 1000 * 60 * 60 * 24 * 30 * 10
+    }));
 });
 
-app.configure(function () {
+app.configure(function() {
 
     // serve static data
-    app.use(express['static'](conf.paths.data, { maxAge:1000 * 60 * 60 * 24 * 30 * 10 }));
+    app.use(express['static'](conf.paths.data, {
+        maxAge: 1000 * 60 * 60 * 24 * 30 * 10
+    }));
 
-    app.use(express.bodyParser({ uploadDir:conf.paths.upload }));
+    app.use(express.bodyParser({
+        uploadDir: conf.paths.upload
+    }));
     app.use(express.methodOverride());
 
     // using 'accept-language' header to guess language settings
@@ -59,11 +65,11 @@ app.configure(function () {
     app.use(app.router);
 });
 
-app.configure('development', function () {
+app.configure('development', function() {
     app.use(express.errorHandler());
 });
 
-app.get('/view/main', function (req, res, next) {
+app.get('/view/main', function(req, res, next) {
     res.render('main');
 });
 
@@ -71,7 +77,7 @@ app.get('/view/main', function (req, res, next) {
  * Upload handler
  */
 app.post('/upload', upload.upload);
-app.all('/upload', function (req, res) {
+app.all('/upload', function(req, res) {
     res.end();
 });
 
@@ -83,4 +89,3 @@ app.get('/:hash', upload.downloadHtml);
 
 
 exports.app = app;
-

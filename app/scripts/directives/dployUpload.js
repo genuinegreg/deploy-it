@@ -89,7 +89,7 @@
                         if(hash !== undefined) {
 
                             scope.hash = hash;
-                            scope.link = conf.http.host +'#/' + hash;
+                            scope.link = conf.http.host + '#/' + hash;
                             scope.$digest();
 
                             var inputDl = element.find('.build_link');
