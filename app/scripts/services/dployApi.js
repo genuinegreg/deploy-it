@@ -9,6 +9,14 @@ dployApp.factory('dployApi', ['$http', function($http) {
     return {
         getApps: function() {
 
+            return [
+                '123456',
+                '654321',
+                '789456',
+                '897654'
+            ]
+
+            // $http.post(conf.http.host + 'getApp', {})
         }
     };
 }]);

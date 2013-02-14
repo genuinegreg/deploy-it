@@ -3,6 +3,7 @@
 // deps
 var express = require('express');
 var upload = require('./routes/upload');
+var apiJson = require('./routes/apiJson');
 var http = require('http');
 var i18n = require('i18n');
 
@@ -81,6 +82,7 @@ app.all('/upload', function(req, res) {
     res.end();
 });
 
+app.post('/json', )
 
 /**
  * Download handlers
