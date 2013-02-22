@@ -43,7 +43,7 @@ app.configure('development', function() {
 });
 
 app.configure('production', function() {
-    app.use(express.logger());
+    app.use(express.logger(':req[X-Real-IP] - - [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'));
     app.use(express['static']('../dist/', {
         maxAge: 1000 * 60 * 60 * 24 * 30 * 10
     }));
