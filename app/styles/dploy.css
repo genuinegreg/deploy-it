@@ -5,7 +5,7 @@ body{
     padding: 0;
     margin: 0;
     font-family: 'Open Sans', sans-serif;
-    background: #f9f9f9 url('../img/snow.png') repeat;
+    /*background: #f9f9f9 url('../img/snow.png') repeat;*/
 }
 h1{
     font-weight: 200;
@@ -29,13 +29,7 @@ hr{
 header{
     padding : 20px 0 20px;
 }
-header .btn{
-    font-size: 16px;
-}
-header .btn.btn-link{
-    color:#999;
-    margin-left:10px;
-}
+
 
 header #logo span.baseline{
     display: block;
@@ -43,20 +37,29 @@ header #logo span.baseline{
     font-size: 15px;
 }
 
-header ul#menu{
+header .focus{
+    background: #2d2d2d;
+    padding:20px 0;
+}
+
+
+menu ul{
     margin-top:50px;
     list-style-type: none;
     text-align: right;
 }
 
-header ul#menu li{
+menu ul li{
     display: inline;
 }
 
-header .focus{
-    background: #2d2d2d;
-    padding:20px 0;
+menu ul li .btn{
+    font-size: 16px;
 }
+menu ul li .btn.btn-link{
+    color:#999;
+}
+
 /*-------------------------------------------------*\
  *  section
  *-------------------------------------------------*/

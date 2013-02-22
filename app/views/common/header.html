@@ -1,15 +1,28 @@
 <div class="container fixed">
     <div class="row">
         <div id="logo" class="span4">
-            <img src="img/logo.png" width="219px" height="120px"/>
+            <img src="./img/logo.png" />
             <span class="baseline">Fast beta app deployment</span>
         </div>
-        <ul id="menu" class="span8">
-            <li><a class="btn btn-primary" href="#">Subscribe</a></li>
-            <li><a class="btn btn-link" href="#/test">Offers</a></li>
-            <li><a class="btn btn-link">About</a></li>
-            <li><a class="btn btn-link">Contact</a></li>
-        </ul>
+        <menu>
+            <ul class="span8">
+                <li class="dropdown">
+                    <a class="btn btn-primary dropdown-toggle" href="#" data-toggle="dropdown">Deploy now ! <span class="caret"></span></a>
+                    <div class="dropdown-menu" style="margin-top:15px;padding: 10px; padding-bottom: 0px;">
+                        <form method="post" action="login" accept-charset="UTF-8">
+                            <input style="margin-bottom: 15px;" type="text" placeholder="Username" id="username" name="username">
+                            <input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="password">
+                            <input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" value="1">
+                            <label class="string optional" for="user_remember_me"> Remember me</label>
+                            <a class="btn btn-primary btn-block" href="./admin.html">Sign in</a>
+                        </form>
+                    </div>
+                </li>
+                <li><a class="btn btn-link">Offers</a></li>
+                <li><a class="btn btn-link">About</a></li>
+                <li><a class="btn btn-link">Contact</a></li>
+            </ul>
+        </menu>
     </div>
     <br/>
 </div>
