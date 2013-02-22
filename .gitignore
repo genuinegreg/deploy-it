@@ -5,3 +5,5 @@ uploads
 *.orig
 .idea
 *.*~
+out.log
+err.log

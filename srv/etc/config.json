@@ -1,12 +1,12 @@
 {
-	"paths": {
-		"upload": "/tmp/dployit/upload",
-		"unzip": "/tmp/dployit/unzip",
-		"data": "/data/dployit"
-	},
+    "paths": {
+        "upload": "/tmp/dployit/upload",
+        "unzip": "/tmp/dployit/unzip",
+        "data": "/data/dployit"
+    },
 
-	"http": {
-		"port": 3000,
-		"root": "http://dploy.plop.io/"
-	}
+    "http": {
+        "port": 3000,
+        "root": "http://dploy.plop.io/"
+    }
 }
