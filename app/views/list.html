@@ -1,10 +1,58 @@
 <header ng-include="'views/common/header.html'">
 </header>
 
+<header>
+
+    <div class="focus">
+        <div dploy-upload></div>
+    </div>
+
+</header>
+
 <div class="container fixed">
-	<ul ng-repeat="app in apps">
-		<li><strong>{{app}}</strong> : <a ng-href="http://dploy.plop.io/#/{{app}}">http://dploy.plop.io/#/{{app}}</a>
-	</ul>
+
+    <h1>Deployments</h1>
+    <br/><br/>
+
+    <div id="tab" class="btn-group" data-toggle="buttons-radio">
+        <a href="#ios" class="btn btn-large btn-info active" data-toggle="tab">iOS</a>
+        <a href="#android" class="btn btn-large btn-info" data-toggle="tab">Android</a>
+        <a href="#wp" class="btn btn-large btn-info" data-toggle="tab">Windows Phone</a>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="ios">
+            <h2> iOS</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>App name</th>
+                    <th>Upload date</th>
+                    <th>Version</th>
+                    <th>short link</th>
+                    <th>nb clicks</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="app in apps">
+                    <td><input type="checkbox"></td>
+                    <td>{{app.name}}</td>
+                    <td>{{app.upload | date:'MMM d, y, H:mm'}}</td>
+                    <td>{{app.version}}</td>
+                    <td><input type="text" value="http://dploy.plop.io/#/{{app.hash}}"></td>
+                    <td>{{app.download}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane" id="android">
+            <h2> Android </h2>
+        </div>
+        <div class="tab-pane" id="wp">
+            <h2> Windows Phone </h2>
+        </div>
+    </div>
 
 </div> <!-- /container -->
 
