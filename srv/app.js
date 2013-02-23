@@ -3,7 +3,7 @@
 // deps
 var express = require('express');
 var upload = require('./routes/upload');
-var apiJson = require('./routes/apiJson');
+var apiJson = require('./routes/api');
 var http = require('http');
 var i18n = require('i18n');
 
@@ -44,9 +44,7 @@ app.configure('development', function() {
 
 app.configure('production', function() {
     app.use(express.logger(':req[X-Real-IP] - - [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'));
-    app.use(express['static']('../dist/', {
-        maxAge: 1000 * 60 * 60 * 24 * 30 * 10
-    }));
+    app.use(express['static']('../dist/'));
 });
 
 app.configure(function() {
@@ -77,8 +75,8 @@ app.get('/view/main', function(req, res, next) {
 /**
  * Upload handler
  */
-app.post('/upload', upload.upload);
-app.all('/upload', function(req, res) {
+ app.post('/upload', upload.upload);
+ app.all('/upload', function(req, res) {
     res.end();
 });
 
@@ -87,7 +85,7 @@ app.all('/upload', function(req, res) {
 /**
  * Download handlers
  */
-app.get('/:hash', upload.downloadHtml);
+ app.get('/:hash', upload.downloadHtml);
 
 
-exports.app = app;
+ exports.app = app;
