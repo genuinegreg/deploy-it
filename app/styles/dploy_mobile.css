@@ -1,0 +1,103 @@
+/*-------------------------------------------------*\
+ *  General
+ *-------------------------------------------------*/
+ body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #eee;
+}
+
+h1,h2{
+    margin:0;
+    padding:0;
+}
+
+hr{
+    margin:5px 0;
+}
+
+.centered{
+    text-align: center;
+}
+
+/*-------------------------------------------------*\
+ *  Header
+ *-------------------------------------------------*/
+header{
+    padding : 20px 0 20px;
+    background-color: #fc543e;
+}
+
+header h1{
+    color:#FFF;
+    font-weight: 600;
+    font-size: 34px;
+}
+
+header h2{
+    color:#2d2d2d;
+    font-weight: 300;
+    font-size: 22px;
+}
+
+/*-------------------------------------------------*\
+ *  Focus
+ *-------------------------------------------------*/
+
+.focus h1{
+    color:#fff;
+}
+.focus h2{
+    color:#fc543e;
+}
+/*-------------------------------------------------*\
+ *  section
+ *-------------------------------------------------*/
+
+section .btn.btn-extralarge{
+    width:98%;
+    padding: 30px 5px;
+    font-size: 24px;
+    font-weight: 300;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+section.focus{
+    background: #2d2d2d;
+    padding:20px 0;
+}
+
+section{
+    padding : 20px 0;
+}
+
+section#infos table{
+    background-color: #FFF;
+}
+
+
+section#infos table th,
+section#infos table td{
+    font-size: 16px;
+    border:none;
+    padding: 15px;
+}
+
+section#infos table td{
+    font-weight: 300;
+}
+
+section#infos table th{
+    text-align: right;
+    font-weight: 600;
+}
+/*-------------------------------------------------*\
+ *  Footer
+ *-------------------------------------------------*/
+ footer{
+    text-align: right;
+}
+
