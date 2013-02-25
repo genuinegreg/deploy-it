@@ -45,22 +45,35 @@ Tests & prod
 
 ### Dev
 
-Modifier le fichier app/scripts/conf.js
+Modifier le fichier app/scripts/app.js
 
-    http.host = 'http://127.0.0.1:3000'
+    .constant('apiUrl', 'http://<host>/')
+    .constant('staticUrl', 'http://<host>/')
 
-cmd1
+Modifier le ~/.dploy/settings.json ou le fichier /etc/dploy/settings.json
+
+    {
+        // ...
+
+        "urls": {
+            "static": "http://<host>",
+            "api": "http://<host>"
+        }
+    }
+
+start api
 
     cd srv
     ./bin/start_dev.bash
 
-cmd2
+start client
 
     yeoman server
 
 
 ### Prod
-Là, ça marche mieux
+
+modifier les fichier app/scripts/app.js et  ~/.dploy/settings.json ou le fichier /etc/dploy/settings.json
 
     # build du projet (concat, mini, images opti)
     yeoman build
