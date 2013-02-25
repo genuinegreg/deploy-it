@@ -11,8 +11,8 @@ describe('Service: conf', function () {
     conf = _conf_;
   }));
 
-  it('should do something', function () {
-    expect(!!conf).toBe(true);
-  });
+//  it('should do something', function () {
+//    expect(!!conf).toBe(true);
+//  });
 
 });

@@ -1,19 +1,16 @@
-(function() {
+(function () {
 
     'use strict';
 
-    dployApp.factory('dployUpload', ['apiUrl', function(apiUrl) {
-        // Service logic
-        // ...
-        var meaningOfLife = 42;
+    angular.module('dployApp').factory('dployUpload', ['apiUrl', function (apiUrl) {
 
         // Public API here
         return {
-            upload: function(files, callback) {
+            upload: function (files, callback) {
 
                 var tests = {
                     formdata: !!window.FormData,
-                    progress: "uploadRoute" in new XMLHttpRequest()
+                    progress: 'uploadRoute' in new XMLHttpRequest()
                 };
                 var formData = tests.formdata ? new FormData() : null;
 
@@ -32,13 +29,13 @@
 
                     xhr.open('POST', apiUrl + '/app.json/upload');
 
-                    xhr.onload = function(xhr) {
+                    xhr.onload = function (xhr) {
                         var response = JSON.parse(xhr.currentTarget.response);
                         callback(undefined, response.hash);
                     };
 
                     if (tests.progress) {
-                        xhr.upload.onprogress = function(event) {
+                        xhr.upload.onprogress = function (event) {
                             if (event.lengthComputable) {
                                 var progress = (event.loaded / event.total * 100);
                                 progress = (progress <= 100 && progress >= 0) ? progress : 0;

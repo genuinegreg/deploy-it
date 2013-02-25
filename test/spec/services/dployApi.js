@@ -11,8 +11,8 @@ describe('Service: dployApi', function () {
     dployApi = _dployApi_;
   }));
 
-  it('should do something', function () {
-    expect(!!dployApi).toBe(true);
-  });
+//  it('should do something', function () {
+//    expect(!!dployApi).toBe(true);
+//  });
 
 });

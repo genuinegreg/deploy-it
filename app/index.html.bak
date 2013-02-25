@@ -14,11 +14,9 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
     <link rel="shortcut icon" href="ico/favicon.png">
 
-    <!-- build:css styles/bootstrap.min.css -->
     <link rel="stylesheet" href="styles/bootstrap.css"/>
-    <!-- endbuild -->
 
-    <!-- build:css styles/styles.min.css -->
+    <!-- build:css styles/main.css -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles/main.css"/>
     <link rel="stylesheet" href="styles/dploy.css"/>
@@ -36,17 +34,17 @@
     <![endif]-->
 
     <!--[if lt IE 9]>
-        <script src="scripts/vendor/es5-shim.min.js"></script>
-        <script src="scripts/vendor/json3.min.js"></script>
+        <script src="components/es5-shim/es5-shim.min.js"></script>
+        <script src="components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
 
     <div ng-view>
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="///ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
-    <script src="scripts/vendor/bootstrap.min.js"></script>
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="components/angular/angular.min.js"></script>
+    <script src="components/bootstrap-js/bootstrap.min.js"></script>
 
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/app.js"></script>

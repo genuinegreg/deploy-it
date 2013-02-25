@@ -11,8 +11,8 @@ describe('Service: dployUpload', function () {
     dployUpload = _dployUpload_;
   }));
 
-  it('should do something', function () {
-    expect(!!dployUpload).toBe(true);
-  });
+//  it('should do something', function () {
+//    expect(!!dployUpload).toBe(true);
+//  });
 
 });

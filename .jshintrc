@@ -1,23 +1,26 @@
 {
-
-    "globals": {
-        "angular": false,
-        "dployApp": false,
-        "console": false,
-        "conf": false
-    },
-
-    "curly":true,
-    "eqeqeq":true,
-    "immed":true,
-    "latedef":true,
-    "newcap":true,
-    "noarg":true,
-    "sub":true,
-    "undef":true,
-    "boss":true,
-    "eqnull":true,
-    "browser":true,
-    "jquery":true,
-    "node":true
+  "node": true,
+  "jquery": true,
+  "browser": true,
+  "es5": true,
+  "esnext": true,
+  "bitwise": true,
+  "camelcase": true,
+  "curly": true,
+  "eqeqeq": true,
+  "immed": true,
+  "indent": 4,
+  "latedef": true,
+  "newcap": true,
+  "noarg": true,
+  "quotmark": "single",
+  "regexp": true,
+  "undef": true,
+  "unused": true,
+  "trailing": true,
+  "smarttabs": true,
+  "globals": {
+    "angular": false,
+    "conf": false
+  }
 }

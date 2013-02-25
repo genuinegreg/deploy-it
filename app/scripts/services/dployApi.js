@@ -1,31 +1,33 @@
 'use strict';
 
-dployApp.factory('dployApi', ['$http', function($http) {
+angular.module('dployApp').factory('dployApi', ['$http', function ($http) {
 
+
+    $http();
     // Public API here
     return {
-        getApps: function() {
+        getApps: function () {
 
             return [
                 {
-                    name: "MyApp",
-                    upload: new Date(2013, 1, 12, 15, 32,0),
+                    name: 'MyApp',
+                    upload: new Date(2013, 1, 12, 15, 32, 0),
                     version: 5,
-                    hash: "654321",
+                    hash: '654321',
                     download: 6
                 },
                 {
-                    name: "OtherApp",
+                    name: 'OtherApp',
                     upload: new Date(2013, 0, 29, 14, 10),
                     version: 1,
-                    hash: "123456",
+                    hash: '123456',
                     download: 15
                 },
                 {
-                    name: "SomeApp",
+                    name: 'SomeApp',
                     upload: new Date(2013, 1, 19, 9, 59),
                     version: 16,
-                    hash: "abc54d",
+                    hash: 'abc54d',
                     download: 46
                 }
             ];

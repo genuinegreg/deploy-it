@@ -1,11 +1,11 @@
-(function() {
-	'use strict';
+(function () {
+    'use strict';
 
-	dployApp.controller('MainCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+    angular.module('dployApp').controller('MainCtrl', ['$scope', '$routeParams', function ($scope, $routeParams) {
 
         $scope.hash = $routeParams.hash;
 
 
-	}]);
+    }]);
 
 })();
