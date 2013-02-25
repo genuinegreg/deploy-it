@@ -20,6 +20,7 @@
     "mkdirp": "~0.3.4",
     "synchronize": "~0.5.2",
     "plist": "git://github.com/genuinegreg/node-plist.git",
-    "mongoose": "~3.5.5"
+    "mongoose": "~3.5.5",
+    "nconf": "~0.6.7"
   }
 }
