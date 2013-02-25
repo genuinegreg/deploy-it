@@ -1,17 +1,16 @@
 {
     "paths": {
-        "upload": "/data/dploy/upload",
-        "unzip": "/data/dploy/unzip",
-        "data": "/data/dploy/store"
+        "upload": "/data/dploy/tmp/upload/",
+        "unzip": "/data/dploy/tmp/unzip/",
+        "data": "/data/dploy/store/"
     },
 
-    "http": {
-        "port": 3000,
-        "root": "http://dploy.plop.io/"
+    "server": {
+        "port": 3000
     },
 
     "urls": {
-    	"static": "api.dploy.plop.io",
-    	"api": "dploy.plop.io"
+        "static": "http://api.dploy.plop.io/",
+        "api": "http://dploy.plop.io/"
     }
 }

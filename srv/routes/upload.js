@@ -1,10 +1,8 @@
 "use strict";
 
 
-var mmh = require('murmurhash3');
 var path = require('path');
-var fs = require('fs');
-var conf = require('../etc/config.json');
+var ncf = require('../etc/nconfLoader');
 
 var uploadHandler = require('../lib/upload');
 
@@ -21,17 +19,6 @@ exports.upload = function upload(req, res) {
         res.end();
     }
 
-    //    console.log('file :', req.files.file);
-    //    console.log('file name :', req.files.file.name);
-    //    console.log('file path :', req.files.file.path);
-    //    console.log('file mime :', req.files.file.mime);
-    //
-    //    var hash = mmh.murmur32HexSync(new Date() + 'plop');
-    //
-    //
-    //    fs.renameSync(req.files.file.path, path.join(conf.paths.data, hash));
-    //
-    //    console.log('hash : ' + hash);
     uploadHandler.handle(req.files.file, function(err, hash) {
         if(err !== undefined) {
             console.log(err);
@@ -64,5 +51,5 @@ exports.downloadPlist = function downloadHtml(req, res) {
 };
 
 exports.downloadIpa = function downloadHtml(req, res) {
-    res.send(path.join(conf.paths.data, req.param('hash') + '.ipa'));
+    res.send(path.join(ncf.get('paths:data'), req.param('hash') + '.ipa'));
 };

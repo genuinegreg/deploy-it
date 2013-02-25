@@ -7,7 +7,8 @@ var apiJson = require('./routes/api');
 var http = require('http');
 var i18n = require('i18n');
 
-var conf = require('./etc/config.json');
+var path = require('path');
+var ncf = require('./etc/nconfLoader');
 
 // config i18n
 i18n.configure({
@@ -26,7 +27,7 @@ app.locals({
 
 app.configure(function() {
 
-    app.set('port', process.env.PORT || conf.http.port);
+    app.set('port', ncf.get('server:port'));
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
 
@@ -50,12 +51,10 @@ app.configure('production', function() {
 app.configure(function() {
 
     // serve static data
-    app.use(express['static'](conf.paths.data, {
-        maxAge: 1000 * 60 * 60 * 24 * 30 * 10
-    }));
+    app.use(express['static'](ncf.get('paths:data')));
 
     app.use(express.bodyParser({
-        uploadDir: conf.paths.upload
+        uploadDir: ncf.get('paths:upload')
     }));
     app.use(express.methodOverride());
 
@@ -75,8 +74,8 @@ app.get('/view/main', function(req, res, next) {
 /**
  * Upload handler
  */
- app.post('/upload', upload.upload);
- app.all('/upload', function(req, res) {
+app.post('/upload', upload.upload);
+app.all('/upload', function(req, res) {
     res.end();
 });
 
@@ -85,7 +84,7 @@ app.get('/view/main', function(req, res, next) {
 /**
  * Download handlers
  */
- app.get('/:hash', upload.downloadHtml);
+app.get('/:hash', upload.downloadHtml);
 
 
- exports.app = app;
+exports.app = app;

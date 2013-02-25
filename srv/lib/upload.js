@@ -1,6 +1,6 @@
 "use strict";
 
-var conf = require('../etc/config.json');
+var ncf = require('../etc/nconfLoader');
 var sync = require('synchronize');
 var path = require('path');
 var fs = require('fs');
@@ -44,7 +44,7 @@ exports.handle = function handle(file, cb) {
 
         // extract Info.plist
         try {
-            child.exec('unzip ' + file.path + ' */*/Info.plist -d ' + path.join(conf.paths.unzip, hash));
+            child.exec('unzip ' + file.path + ' */*/Info.plist -d ' + path.join(ncf.get('paths:unzip'), hash));
         } catch(err) {
             cb(err);
         }
@@ -52,7 +52,7 @@ exports.handle = function handle(file, cb) {
 
         // convert binary plist to xml plist
         try {
-            child.exec('plutil -i ' + path.join(conf.paths.unzip, hash, '*/*/Info.plist') + ' > ' + path.join(conf.paths.unzip, hash, 'Info_xml.plist'));
+            child.exec('plutil -i ' + path.join(ncf.get('paths:unzip'), hash, '*/*/Info.plist') + ' > ' + path.join(ncf.get('paths:unzip'), hash, 'Info_xml.plist'));
         } catch(err) {
             cb(err);
         }
@@ -60,7 +60,7 @@ exports.handle = function handle(file, cb) {
 
         // extract CFBundleURLName from Info_xml.plist
         try {
-            var obj = plist.parseFileSync(path.join(conf.paths.unzip, hash, 'Info_xml.plist'));
+            var obj = plist.parseFileSync(path.join(ncf.get('paths:unzip'), hash, 'Info_xml.plist'));
             bundleIdentifier = obj.CFBundleIdentifier;
         } catch(err) {
             cb(err);
@@ -69,7 +69,7 @@ exports.handle = function handle(file, cb) {
 
         // delete temporary unzip files
         try {
-            child.exec('rm -R ' + path.join(conf.paths.unzip, hash));
+            child.exec('rm -R ' + path.join(ncf.get('paths:unzip'), hash));
         } catch(err) {
             cb(err);
         }
@@ -77,7 +77,7 @@ exports.handle = function handle(file, cb) {
 
         // move file
         try {
-            var renamePath = path.join(conf.paths.data, hash + '.ipa');
+            var renamePath = path.join(ncf.get('paths:data'), hash + '.ipa');
             fs.rename(file.path, renamePath);
         } catch(err) {
             cb(err);
@@ -89,7 +89,7 @@ exports.handle = function handle(file, cb) {
                 'items': [{
                     'assets': [{
                         'kind': 'software-package',
-                        'url': conf.http.root + hash + '.ipa'
+                        'url': ncf.get('urls.api') + hash + '.ipa'
                     }],
                     metadata: {
                         'bundle-identifier': bundleIdentifier,
@@ -101,7 +101,7 @@ exports.handle = function handle(file, cb) {
             };
 
             var data = plist.build(plistObj);
-            fs.writeFileSync(path.join(conf.paths.data, hash + '.plist'), data);
+            fs.writeFileSync(path.join(ncf.get('paths:data'), hash + '.plist'), data);
         } catch(err) {
             cb(err);
         }
