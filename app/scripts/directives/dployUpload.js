@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    dployApp.directive('dployUpload', ['dployUpload', '$document', function(dployUpload, $document) {
+    dployApp.directive('dployUpload', ['dployUpload', '$document', 'apiUrl', 'staticUrl', function(dployUpload, $document, apiUrl, staticUrl) {
 
         function postLink(scope, element, attrs) {
             scope.progress = '0%';
@@ -12,7 +12,7 @@
                 filereader: typeof FileReader !== 'undefined',
                 dnd: 'draggable' in document.createElement('span'),
                 formdata: !! window.FormData,
-                progress: "upload" in new XMLHttpRequest()
+                progress: "uploadRoute" in new XMLHttpRequest()
             };
 
             var supportAlert = {
@@ -89,12 +89,12 @@
                         if(hash !== undefined) {
 
                             scope.hash = hash;
-                            scope.link = conf.http.host + '#/' + hash;
+                            scope.link = apiUrl + '#/' + hash;
                             scope.$digest();
 
                             var inputDl = element.find('.build_link');
 
-                            inputDl.val('http://dploy.io/#/' + hash);
+                            inputDl.val(staticUrl + '#/' + hash);
                             inputDl.focus();
                             inputDl.select();
 

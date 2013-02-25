@@ -89,7 +89,7 @@ exports.handle = function handle(file, cb) {
                 'items': [{
                     'assets': [{
                         'kind': 'software-package',
-                        'url': ncf.get('urls.api') + hash + '.ipa'
+                        'url': ncf.get('urls:api') + '/' + hash + '.ipa'
                     }],
                     metadata: {
                         'bundle-identifier': bundleIdentifier,

@@ -2,12 +2,15 @@
 
 // deps
 var express = require('express');
-var upload = require('./routes/upload');
-var apiJson = require('./routes/api');
 var http = require('http');
 var i18n = require('i18n');
-
 var path = require('path');
+
+// routes
+var uploadRoute = require('./routes/upload');
+var apiRoute = require('./routes/api');
+
+// config
 var ncf = require('./etc/nconfLoader');
 
 // config i18n
@@ -28,8 +31,7 @@ app.locals({
 app.configure(function() {
 
     app.set('port', ncf.get('server:port'));
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'jade');
+    app.set('json replacer', '1234');
 
     app.use(express.favicon());
 });
@@ -37,7 +39,8 @@ app.configure(function() {
 app.configure('development', function() {
     app.use(express.logger('dev'));
     app.use(function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Origin", 'http://paprika.dev:3501');
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
         next();
     });
     app.use(express['static']('../app/'));
@@ -67,24 +70,23 @@ app.configure('development', function() {
     app.use(express.errorHandler());
 });
 
-app.get('/view/main', function(req, res, next) {
-    res.render('main');
-});
-
 /**
  * Upload handler
  */
-app.post('/upload', upload.upload);
-app.all('/upload', function(req, res) {
-    res.end();
+app.post('/app.json/upload', uploadRoute.upload);
+app.get('/app.json/list', apiRoute.appList);
+app.get('/app.json/info/:id', apiRoute.appInfo);
+
+app.post('user.json/create', apiRoute.userCreate);
+app.post('user.json/login', apiRoute.userLogin);
+
+
+
+
+
+
+app.all('/*', function(req, res, next) {
+    res.end('OPTIONS');
 });
-
-//app.post('/json', )
-
-/**
- * Download handlers
- */
-app.get('/:hash', upload.downloadHtml);
-
 
 exports.app = app;

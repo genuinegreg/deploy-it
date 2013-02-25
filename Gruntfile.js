@@ -127,8 +127,8 @@ module.exports = function (grunt) {
         rev:{
             js:'scripts/scripts.js',
             css:['styles/styles.min.css', 'styles/bootstrap.min.css'],
-            // img:['img/**/*.jpg', 'img/**/*.png', 'ico/*.png', 'styles/img/*.png', 'styles/img/*.jpg']
-            img:['image/**/*.jpg', 'image/**/*.png']
+            img:['img/**/*.jpg', 'img/**/*.png', 'ico/*.png', 'styles/img/*.png', 'styles/img/*.jpg']
+//            img:['image/**/*.jpg', 'image/**/*.png']
         },
 
         // usemin handler should point to the file containing

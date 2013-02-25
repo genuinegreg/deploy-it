@@ -1,5 +1,0 @@
-var conf = {
-	http: {
-		host: "./"
-	}
-};

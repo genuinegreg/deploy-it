@@ -32,18 +32,10 @@ exports.upload = function upload(req, res) {
         res.end();
 
     });
-
-
 };
 
 
 // DOWNLAOD ROUTES
-exports.downloadHtml = function downloadHtml(req, res) {
-    res.render('download/html', {
-        hash: req.param('hash')
-    });
-};
-
 exports.downloadPlist = function downloadHtml(req, res) {
     res.render('download/plist', {
         hash: req.param('hash')

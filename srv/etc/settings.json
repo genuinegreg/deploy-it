@@ -10,7 +10,7 @@
     },
 
     "urls": {
-        "static": "http://api.dploy.plop.io/",
-        "api": "http://dploy.plop.io/"
+        "static": "http://api.dploy.plop.io",
+        "api": "http://dploy.plop.io"
     }
 }
