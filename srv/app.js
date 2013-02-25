@@ -4,7 +4,6 @@
 var express = require('express');
 var http = require('http');
 var i18n = require('i18n');
-var path = require('path');
 
 // routes
 var uploadRoute = require('./routes/upload');
@@ -86,7 +85,7 @@ app.post('user.json/login', apiRoute.userLogin);
 
 
 app.all('/*', function(req, res, next) {
-    res.end('OPTIONS');
+    res.end();
 });
 
 exports.app = app;

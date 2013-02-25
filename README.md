@@ -47,8 +47,8 @@ Tests & prod
 
 Modifier le fichier app/scripts/app.js
 
-    .constant('apiUrl', 'http://<host>/')
-    .constant('staticUrl', 'http://<host>/')
+    .constant('apiUrl', 'http://<host>')
+    .constant('staticUrl', 'http://<host>')
 
 Modifier le ~/.dploy/settings.json ou le fichier /etc/dploy/settings.json
 

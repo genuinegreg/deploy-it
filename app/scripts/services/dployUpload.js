@@ -30,7 +30,7 @@
 
                     var xhr = new XMLHttpRequest();
 
-                    xhr.open('POST', apiUrl + 'upload');
+                    xhr.open('POST', apiUrl + '/app.json/upload');
 
                     xhr.onload = function(xhr) {
                         var response = JSON.parse(xhr.currentTarget.response);

@@ -1,8 +1,8 @@
 'use strict';
 
 var dployApp = angular.module('dployApp', [])
-    .constant('apiUrl', 'http://paprika.dev:3000/')
-    .constant('staticUrl', 'http://paprika.dev:3501/')
+    .constant('apiUrl', 'http://paprika.dev:3000')
+    .constant('staticUrl', 'http://paprika.dev:3501')
     .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/', {
