@@ -313,6 +313,16 @@ module.exports = function (grunt) {
         'testacular'
     ]);
 
+    grunt.registerTask('linttest', [
+        'jade',
+        'jshint',
+        'clean:server',
+        'coffee',
+//        'compass',
+        'connect:test',
+        'testacular'
+    ]);
+
     grunt.registerTask('build', [
         'clean:dist',
         'jade',
