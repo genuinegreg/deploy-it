@@ -188,6 +188,10 @@ module.exports = function (grunt) {
         },
         imagemin: {
             dist: {
+                options: {
+                    optimizationLevel: 3,
+                    progressive: true
+                },
                 files: [
                     {
                         expand: true,
@@ -290,8 +294,7 @@ module.exports = function (grunt) {
         'clean:server',
         'jade',
         'coffee:dist',
-//        'preprocess',
-        'compass:server',
+//        'compass:server',
         'livereload-start',
         'connect:livereload',
         'open',
@@ -302,8 +305,7 @@ module.exports = function (grunt) {
         'clean:server',
         'jade',
         'coffee',
-//        'preprocess',
-        'compass',
+//        'compass',
         'connect:test',
         'testacular'
     ]);
@@ -314,8 +316,7 @@ module.exports = function (grunt) {
         'jshint',
         'test',
         'coffee',
-//        'preprocess',
-        'compass:dist',
+//        'compass:dist',
         'useminPrepare',
         'imagemin',
         'cssmin',

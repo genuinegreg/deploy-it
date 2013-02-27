@@ -14,7 +14,6 @@ ncf.file('user', path.join(process.env.HOME, '.dploy/settings.json'));
 ncf.file('global', '/etc/dploy/settings.json');
 
 // Then load configuration from a default file.
-console.log(path.join(__dirname, 'settings.json'));
 ncf.file('default', path.join(__dirname, 'settings.json'));
 
 

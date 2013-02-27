@@ -10,3 +10,5 @@ index.html
 *.*~
 out.log
 err.log
+.vagrant
+npm-debug.log
