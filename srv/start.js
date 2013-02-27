@@ -1,14 +1,13 @@
-"use strict";
+'use strict';
 
 
 // dependencies
 var http = require('http');
-var path = require('path');
 var fs = require('fs');
 var mkdirp = require('mkdirp');
 
 // load config
-var ncf = require("./etc/nconfLoader");
+var ncf = require('./etc/nconfLoader');
 
 // require app
 var app = require('./app.js').app;
@@ -33,8 +32,7 @@ if (!fs.exists(dataPath)) {
 }
 
 
-
 // start server
-http.createServer(app).listen(app.get('port'), function() {
-    console.log("Express server listening on port %d in %s mode", app.get('port'), app.settings.env);
+http.createServer(app).listen(app.get('port'), function () {
+    console.log('Express server listening on port %d in %s mode', app.get('port'), app.settings.env);
 });

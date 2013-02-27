@@ -2,7 +2,6 @@
 
 // deps
 var express = require('express');
-var http = require('http');
 var i18n = require('i18n');
 
 // routes
@@ -27,7 +26,7 @@ app.locals({
     __n: i18n.__n
 });
 
-app.configure(function() {
+app.configure(function () {
 
     app.set('port', ncf.get('server:port'));
     app.set('json replacer', '1234');
@@ -35,21 +34,21 @@ app.configure(function() {
     app.use(express.favicon());
 });
 
-app.configure('development', function() {
+app.configure('development', function () {
     app.use(express.logger('dev'));
     app.use(express['static']('../app/'));
 });
 
-app.configure('production', function() {
-    app.use(express.logger(':req[X-Real-IP] - - [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'));
+app.configure('production', function () {
+    app.use(express.logger(':req[X-Real-IP] - - [:date] \':method :url HTTP/:http-version\' :status :res[content-length] \':referrer\' \':user-agent\''));
     app.use(express['static']('../dist/'));
 });
 
-app.configure(function() {
+app.configure(function () {
 
-    app.use(function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", ncf.get('urls:static'));
-        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    app.use(function (req, res, next) {
+        res.header('Access-Control-Allow-Origin', ncf.get('urls:static'));
+        res.header('Access-Control-Allow-Headers', 'X-Requested-With');
         next();
     });
 
@@ -66,7 +65,7 @@ app.configure(function() {
     app.use(app.router);
 });
 
-app.configure('development', function() {
+app.configure('development', function () {
     app.use(express.errorHandler());
 });
 
@@ -81,11 +80,7 @@ app.post('user.json/create', apiRoute.userCreate);
 app.post('user.json/login', apiRoute.userLogin);
 
 
-
-
-
-
-app.all('/*', function(req, res, next) {
+app.all('/*', function (req, res) {
     res.end();
 });
 

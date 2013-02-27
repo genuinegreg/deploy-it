@@ -1,9 +1,11 @@
+'use strict';
 
-function login(username, password) {
+exports.login = function login() {
 
-}
+};
 
 
-function logout() {
-	
-}
+exports.logout = function logout() {
+
+};
+

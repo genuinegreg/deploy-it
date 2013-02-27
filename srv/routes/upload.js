@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 
 var path = require('path');
@@ -9,18 +9,18 @@ var uploadHandler = require('../lib/upload');
 // UPLOAD ROUTES
 exports.upload = function upload(req, res) {
 
-    if(req.files === undefined) {
+    if (req.files === undefined) {
         res.send(500, 'Error : no file');
         res.end();
     }
 
-    if(req.files.file instanceof Array) {
+    if (req.files.file instanceof Array) {
         res.send(500, 'Error: multiple files upload are not allowed');
         res.end();
     }
 
-    uploadHandler.handle(req.files.file, function(err, hash) {
-        if(err !== undefined) {
+    uploadHandler.handle(req.files.file, function (err, hash) {
+        if (err !== undefined) {
             console.log(err);
             res.send(500, 'Error');
             res.end();
