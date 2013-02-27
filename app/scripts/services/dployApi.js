@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dployApp').factory('dployApi', ['$http', function ($http) {
+angular.module('dployApp').factory('dployApi', [ function () {
 
 
 //    $http();
