@@ -278,7 +278,9 @@ module.exports = function (grunt) {
                         src: [
                             '*.{ico,txt}',
                             '.htaccess',
-                            'components/**/*'
+                            'components/**/*',
+                            'styles/dploy_mobile.css',
+                            'styles/bootstrap.css'
                         ]
                     }
                 ]
