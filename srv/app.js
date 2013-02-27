@@ -37,11 +37,6 @@ app.configure(function() {
 
 app.configure('development', function() {
     app.use(express.logger('dev'));
-    app.use(function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", 'http://paprika.dev:3501');
-        res.header("Access-Control-Allow-Headers", "X-Requested-With");
-        next();
-    });
     app.use(express['static']('../app/'));
 });
 
@@ -51,6 +46,12 @@ app.configure('production', function() {
 });
 
 app.configure(function() {
+
+    app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", ncf.get('urls:static'));
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        next();
+    });
 
     // serve static data
     app.use(express['static'](ncf.get('paths:data')));
