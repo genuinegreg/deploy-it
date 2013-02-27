@@ -3,7 +3,7 @@
 angular.module('dployApp').factory('dployApi', ['$http', function ($http) {
 
 
-    $http();
+//    $http();
     // Public API here
     return {
         getApps: function () {
