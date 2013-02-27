@@ -214,8 +214,7 @@ module.exports = function (grunt) {
                     '<%= yeoman.dist %>/styles/main.css': [
                         '.tmp/styles/{,*/}*.css',
                         '<%= yeoman.app %>/styles/{,*/}*.css'
-                    ],
-                    '<%= yeoman.dist %>/styles/boostrap.css': '<%= yeoman.app %>/styles/boostrap.css'
+                    ]
                 }
             }
         },
