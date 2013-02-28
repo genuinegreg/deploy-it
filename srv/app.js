@@ -3,10 +3,14 @@
 // deps
 var express = require('express');
 var i18n = require('i18n');
+require('./lib/response');
 
 // routes
 var uploadRoute = require('./routes/upload');
 var apiRoute = require('./routes/api');
+
+// middleware
+var middleware = require('./lib/middleware');
 
 // config
 var ncf = require('./etc/nconfLoader');
@@ -46,11 +50,9 @@ app.configure('production', function () {
 
 app.configure(function () {
 
-    app.use(function (req, res, next) {
-        res.header('Access-Control-Allow-Origin', ncf.get('urls:static'));
-        res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-        next();
-    });
+    // dploy middlewares
+    app.use(middleware.checkRequestHeaders);
+    app.use(middleware.cors);
 
     // serve static data
     app.use(express['static'](ncf.get('paths:data')));
@@ -80,8 +82,8 @@ app.post('user.json/create', apiRoute.userCreate);
 app.post('user.json/login', apiRoute.userLogin);
 
 
-app.all('/*', function (req, res) {
-    res.end();
-});
+//app.all('/*', function (req, res) {
+//    res.end();
+//});
 
 exports.app = app;
