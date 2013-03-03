@@ -22,5 +22,13 @@
   "globals": {
     "angular": false,
     "conf": false
-  }
+  },
+  "predef": [
+     "describe",
+     "it",
+     "before",
+     "beforeEach",
+     "after",
+     "afterEach"
+  ]
 }
