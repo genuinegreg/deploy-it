@@ -41,3 +41,10 @@ exports.sha512Sync = function (value) {
     shasum.update(seed(value, 6));
     return shasum.digest('hex');
 };
+
+exports.sha256Sync = function (value) {
+    var shasum = crypto.createHash('sha256');
+    shasum.update(salt);
+    shasum.update(seed(value, 3));
+    return shasum.digest('hex');
+};
