@@ -44,15 +44,34 @@ exports.signin = function signin(req, res) {
 
 exports.login = function login(req, res) {
 
-    if (req.body.username === undefined) {
+    var username = req.body.username,
+        password = req.body.password;
+
+    if (username === undefined || username === '') {
         res.respond(new Error('username undefiend'), 400);
     }
 
-    if (req.body.password === undefined) {
+    if (password === undefined || password === '') {
         res.respond(new Error('password undefined'), 400);
     }
 
-    res.respond(undefined, 500);
+
+    api.login(username, password, function (err, sessionid) {
+
+        if (err) {
+            res.respond(undefined, 500);
+            return;
+        }
+
+        if (sessionid === null || sessionid === undefined) {
+            res.respond('Wrong usernae or password', 400);
+            return;
+        }
+
+        res.respond({
+            sessionid: sessionid
+        }, 200);
+    });
 };
 
 

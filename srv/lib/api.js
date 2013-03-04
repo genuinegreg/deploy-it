@@ -63,6 +63,8 @@ exports.signin = function (username, password, callback) {
  * @param {LoginResponse} callback
  */
 exports.login = function (username, password, callback) {
+
+
     db.Account.findOne(
         {
             'users': {
@@ -88,15 +90,8 @@ exports.login = function (username, password, callback) {
                 account: account
             });
 
-            newSessionid.save(function (err, sessionid) {
-
-                if (err !== undefined && err !== null && err.code === 11000) {
-                    console.log('sessionId exist');
-                    exports.login(username, password, callback);
-                    return;
-                }
-
-                callback(err, sessionid);
+            newSessionid.save(function(err, sessionid) {
+                callback(err, sessionid._id);
             });
         }
     );
