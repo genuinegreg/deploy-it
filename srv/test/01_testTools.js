@@ -5,6 +5,7 @@ var client = exports.client = require('restify').createJsonClient({
     url: 'http://localhost:3005'
 });
 
+require('../lib/db');
 var mongoose = require('mongoose');
 
 exports.dropDb = function (cb) {
