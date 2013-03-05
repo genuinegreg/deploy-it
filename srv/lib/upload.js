@@ -10,8 +10,6 @@ var plist = require('plist');
 
 exports.handle = function handle(file, cb) {
 
-    console.log('exec handle');
-
     sync(fs, 'rename');
     sync(mmh, 'murmur32Hex');
     sync(child, 'exec');
