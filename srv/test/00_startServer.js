@@ -6,7 +6,7 @@ var http = require('http');
 
 var ncf = require('../etc/nconfLoader');
 ncf.set('db:database', 'dploy-test');
-//ncf.set('logger:disable', true);
+ncf.set('logger:disable', true);
 
 var testTools = require('./01_testTools.js');
 

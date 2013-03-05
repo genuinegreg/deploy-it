@@ -67,13 +67,10 @@ describe('REST API', function () {
 
         it('should login with valid credential', function (done) {
             testTools.signin('greg', 'plop', function (err) {
-                console.log('plop');
                 if (err) {
                     throw err;
                 }
-                console.log('plop2');
-                testTools.login({username: 'greg', password: 'plop'}, function (err, data) {
-                    console.log('plop2 ', err, data);
+                testTools.login({username: 'greg', password: 'plop'}, function (err) {
                     if (err) {
                         throw err;
                     }
@@ -171,14 +168,16 @@ describe('REST API', function () {
         it('should not fail with valid sessionid', function (done) {
 
             testTools.signin('greg', 'plop', function (err) {
+
                 if (err) {
                     throw err;
                 }
-                testTools.login('greg', 'plop', function (err) {
+                testTools.login({username: 'greg', password: 'plop'}, function (err, data) {
+
                     if (err) {
                         throw err;
                     }
-                    testTools.logout('123456', function (err) {
+                    testTools.logout(data.sessionid, function (err) {
                         if (err) {
                             throw err;
                         }

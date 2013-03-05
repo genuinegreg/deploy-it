@@ -30,7 +30,7 @@ exports.login = function (credential, callback) {
     });
 };
 
-exports.login = function (sessionid, callback) {
+exports.logout = function (sessionid, callback) {
     client.post('/user.json/logout', {sessionid: sessionid}, function (err, req, res, data) {
         callback(err, data);
     });
