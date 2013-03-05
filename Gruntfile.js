@@ -73,7 +73,7 @@ module.exports = function (grunt) {
             },
             test: {
                 options: {
-                    port: 9000,
+                    port: 9005,
                     middleware: function (connect) {
                         return [
                             mountFolder(connect, '.tmp'),
@@ -98,7 +98,8 @@ module.exports = function (grunt) {
             },
             all: [
                 'Gruntfile.js',
-                '<%= yeoman.app %>/scripts/{,*/}*.js'
+                '<%= yeoman.app %>/scripts/{,*/}*.js',
+                'srv/{,*/}/*.js'
             ]
         },
         testacular: {
@@ -306,6 +307,16 @@ module.exports = function (grunt) {
     grunt.registerTask('test', [
         'clean:server',
         'jade',
+        'coffee',
+//        'compass',
+        'connect:test',
+        'testacular'
+    ]);
+
+    grunt.registerTask('linttest', [
+        'jade',
+        'jshint',
+        'clean:server',
         'coffee',
 //        'compass',
         'connect:test',

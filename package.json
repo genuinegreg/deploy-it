@@ -38,7 +38,10 @@
     "grunt-preprocess": "~2.0.0",
     "grunt-contrib-jade": "~0.4.0",
     "generator-testacular": "~0.1.1",
-    "generator-angular": "~0.1.5"
+    "generator-angular": "~0.1.5",
+    "should": "~1.2.2",
+    "mocha": "~1.8.1",
+    "restify": "~2.2.1"
   },
   "engines": {
     "node": ">=0.8.0"

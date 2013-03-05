@@ -2,12 +2,15 @@
 
 // deps
 var express = require('express');
-var http = require('http');
 var i18n = require('i18n');
+require('./lib/response');
 
 // routes
 var uploadRoute = require('./routes/upload');
 var apiRoute = require('./routes/api');
+
+// middleware
+var middleware = require('./lib/middleware');
 
 // config
 var ncf = require('./etc/nconfLoader');
@@ -38,21 +41,26 @@ app.configure(function () {
 });
 
 app.configure('development', function () {
-    app.use(express.logger('dev'));
-    app.use(function (req, res, next) {
-        res.header("Access-Control-Allow-Origin", 'http://paprika.dev:3501');
-        res.header("Access-Control-Allow-Headers", "X-Requested-With");
-        next();
-    });
+
+    if (!ncf.get('logger:disable')) {
+        app.use(express.logger('dev'));
+    }
     app.use(express['static']('../app/'));
 });
 
 app.configure('production', function () {
-    app.use(express.logger(':req[X-Real-IP] - - [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'));
+
+    if (!ncf.get('logger:disable')) {
+        app.use(express.logger(':req[X-Real-IP] - - [:date] \':method :url HTTP/:http-version\' :status :res[content-length] \':referrer\' \':user-agent\''));
+    }
     app.use(express['static']('../dist/'));
 });
 
 app.configure(function () {
+
+    // dploy middlewares
+    app.use(middleware.checkRequestHeaders);
+    app.use(middleware.cors);
 
     // serve static data
     app.use(express['static'](ncf.get('paths:data')));
@@ -84,12 +92,13 @@ app.post('/app.json/upload', uploadRoute.upload);
 app.get('/app.json/list', apiRoute.appList);
 app.get('/app.json/info/:id', apiRoute.appInfo);
 
-app.post('user.json/create', apiRoute.userCreate);
-app.post('user.json/login', apiRoute.userLogin);
+app.post('/user.json/signin', apiRoute.signin);
+app.post('/user.json/login', apiRoute.login);
+app.post('/user.json/logout', apiRoute.logout);
 
 
-app.all('/*', function (req, res, next) {
-    res.end();
+app.all('/*', function (req, res) {
+    res.respond('', 404);
 });
 
 exports.app = app;

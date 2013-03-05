@@ -9,6 +9,11 @@
         "port": 3000
     },
 
+    "db": {
+        "host": "localhost",
+        "database": "dploy"
+    },
+
     "urls": {
         "static": "http://dploy.plop.io",
         "api": "http://dploy.plop.io"
