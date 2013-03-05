@@ -65,89 +65,79 @@ describe('REST API', function () {
 
     describe('/user.json/login', function () {
 
-        it('should login with valid credential', function (done) {
+
+        // create accout before each login tests
+        beforeEach(function (done) {
             testTools.signin('greg', 'plop', function (err) {
                 if (err) {
                     throw err;
                 }
-                testTools.login({username: 'greg', password: 'plop'}, function (err) {
-                    if (err) {
-                        throw err;
-                    }
-                    done();
-                });
+                done();
+            });
+        });
+
+        it('should login with valid credential', function (done) {
+            testTools.login({username: 'greg', password: 'plop'}, function (err) {
+                if (err) {
+                    throw err;
+                }
+                done();
             });
         });
 
         it('should failed to login with wrong username', function (done) {
-            testTools.signin('toto', 'plop', function (err) {
-                if (err) {
+
+            testTools.login({username: 'toto', password: 'plop'}, function (err) {
+                if (!err) {
+                    throw new Error('"greg" loged in');
+                }
+                if (err && err.restCode !== 400) {
                     throw err;
                 }
-                testTools.login({username: 'greg', password: 'plop'}, function (err) {
-                    if (!err) {
-                        throw new Error('"greg" loged in');
-                    }
-                    if (err && err.restCode !== 400) {
-                        throw err;
-                    }
 
-                    done();
-                });
+                done();
             });
         });
 
         it('should failed to login with wrong password', function (done) {
-            testTools.signin('greg', 'bam', function (err) {
-                if (err) {
+
+            testTools.login({username: 'greg', password: 'toto'}, function (err) {
+                if (!err) {
+                    throw new Error('"greg" loged in');
+                }
+                if (err && err.restCode !== 400) {
                     throw err;
                 }
-                testTools.login({username: 'greg', password: 'plop'}, function (err) {
-                    if (!err) {
-                        throw new Error('"greg" loged in');
-                    }
-                    if (err && err.restCode !== 400) {
-                        throw err;
-                    }
 
-                    done();
-                });
+                done();
             });
         });
 
         it('should failed to login with wrong credential', function (done) {
-            testTools.signin('toto', 'plop', function (err) {
-                if (err) {
+
+            testTools.login({username: 'toto', password: 'bam'}, function (err) {
+                if (!err) {
+                    throw new Error('"greg" loged in');
+                }
+                if (err && err.restCode !== 400) {
                     throw err;
                 }
-                testTools.login({username: 'greg', password: 'bam'}, function (err) {
-                    if (!err) {
-                        throw new Error('"greg" loged in');
-                    }
-                    if (err && err.restCode !== 400) {
-                        throw err;
-                    }
 
-                    done();
-                });
+                done();
             });
         });
 
         it('should failed without credential', function (done) {
-            testTools.signin('toto', 'plop', function (err) {
-                if (err) {
+
+            testTools.login({}, function (err) {
+                if (!err) {
+                    throw new Error('"greg" loged in');
+                }
+                if (err && err.restCode !== 400) {
                     throw err;
                 }
-                testTools.login({}, function (err) {
-                    if (!err) {
-                        throw new Error('"greg" loged in');
-                    }
-                    if (err && err.restCode !== 400) {
-                        throw err;
-                    }
 
-                    done();
-                });
+                done();
             });
         });
 
@@ -156,6 +146,18 @@ describe('REST API', function () {
 
 
     describe('/user.json/logout', function () {
+
+
+        // create accout before each logout tests
+        beforeEach(function (done) {
+            testTools.signin('greg', 'plop', function (err) {
+                if (err) {
+                    throw err;
+                }
+                done();
+            });
+        });
+
         it('should not fail with invalid sessionid', function (done) {
             testTools.logout('123456', function (err) {
                 if (err) {
@@ -167,22 +169,16 @@ describe('REST API', function () {
 
         it('should not fail with valid sessionid', function (done) {
 
-            testTools.signin('greg', 'plop', function (err) {
+            testTools.login({username: 'greg', password: 'plop'}, function (err, data) {
 
                 if (err) {
                     throw err;
                 }
-                testTools.login({username: 'greg', password: 'plop'}, function (err, data) {
-
+                testTools.logout(data.sessionid, function (err) {
                     if (err) {
                         throw err;
                     }
-                    testTools.logout(data.sessionid, function (err) {
-                        if (err) {
-                            throw err;
-                        }
-                        done();
-                    });
+                    done();
                 });
             });
         });
