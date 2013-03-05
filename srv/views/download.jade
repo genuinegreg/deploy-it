@@ -13,33 +13,33 @@ head
 body
     header
         div.container-fluid
-            h1 My Awesome App
-            h2 Version 1.0
+            h1 My Awesome App ::  #{hash}
+            h2 Version #{version}
     section
         div.container-fluid.centered
-            a.btn.btn-extralarge(href='#') Install application
+            a.btn.btn-extralarge(href='itms-services://?action=download-manifest&url=http://dploy.plop.io/#{hash}.plist#') Install application
     section#infos
         div.container-fluid
             table.table.table-condensed
                 tbody
                     tr
                         td Minimum OS
-                        th 5.1
+                        th #{minos}
                     tr
                         td Build file size
-                        th 2.8 MB
+                        th #{size}
                     tr
                         td Bundle id
-                        th com.awesome.app
+                        th #{bundleid}
                     tr
                         td Device family
                         th iPhone, iPad
                     tr
                         td Profile expiration
-                        th 12/08/2014
+                        th #{profileExpiration}
                     tr
                         td Upload date
-                        th 20/02/2013
+                        th #{uploadDate}
     footer
         div.container-fluid
             img(src='./images/logo.png',width='60')

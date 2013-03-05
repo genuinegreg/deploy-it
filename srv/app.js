@@ -81,8 +81,16 @@ app.configure('development', function () {
 
 
 app.get(/^\/((?:[0-9a-z]{8})+)$/, function (req, res) {
-    console.log(req.params);
-    res.render('download');
+
+    res.render('download', {
+        hash: req.params[0],
+        version: '1.0',
+        minos: '5.1',
+        size: '2.8mb',
+        bundleid: 'com.awesome.app',
+        profileExpiration: '12/08/2014',
+        uploadDate: '20/02/2013'
+    });
 });
 
 /**

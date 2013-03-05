@@ -20,8 +20,7 @@
   "trailing": true,
   "smarttabs": true,
   "globals": {
-    "angular": false,
-    "conf": false
+    "angular": false
   },
   "predef": [
      "describe",
