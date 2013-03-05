@@ -27,17 +27,19 @@ app.locals({
     __n: i18n.__n
 });
 
-app.configure(function() {
+app.configure(function () {
 
     app.set('port', ncf.get('server:port'));
-    app.set('json replacer', '1234');
+
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'jade');
 
     app.use(express.favicon());
 });
 
-app.configure('development', function() {
+app.configure('development', function () {
     app.use(express.logger('dev'));
-    app.use(function(req, res, next) {
+    app.use(function (req, res, next) {
         res.header("Access-Control-Allow-Origin", 'http://paprika.dev:3501');
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         next();
@@ -45,12 +47,12 @@ app.configure('development', function() {
     app.use(express['static']('../app/'));
 });
 
-app.configure('production', function() {
+app.configure('production', function () {
     app.use(express.logger(':req[X-Real-IP] - - [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'));
     app.use(express['static']('../dist/'));
 });
 
-app.configure(function() {
+app.configure(function () {
 
     // serve static data
     app.use(express['static'](ncf.get('paths:data')));
@@ -65,8 +67,14 @@ app.configure(function() {
     app.use(app.router);
 });
 
-app.configure('development', function() {
+app.configure('development', function () {
     app.use(express.errorHandler());
+});
+
+
+app.get(/^\/((?:[0-9a-z]{8})+)$/, function (req, res) {
+    console.log(req.params);
+    res.render('download');
 });
 
 /**
@@ -80,11 +88,7 @@ app.post('user.json/create', apiRoute.userCreate);
 app.post('user.json/login', apiRoute.userLogin);
 
 
-
-
-
-
-app.all('/*', function(req, res, next) {
+app.all('/*', function (req, res, next) {
     res.end();
 });
 
