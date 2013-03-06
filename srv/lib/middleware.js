@@ -18,7 +18,13 @@ exports.checkRequestHeaders = function checkRequestHeaders(req, res, next) {
 
 
 exports.cors = function cors(req, res, next) {
+
+//    res.header('Origin', ncf.get('urls:static'));
     res.header('Access-Control-Allow-Origin', ncf.get('urls:static'));
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-    next();
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+    if (req.method !== 'OPTIONS') {
+        next();
+        return;
+    }
+    res.end();
 };

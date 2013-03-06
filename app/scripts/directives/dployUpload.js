@@ -4,7 +4,7 @@
     angular.module('dployApp').directive('dployUpload', ['dployUpload', '$document', 'apiUrl', function (dployUpload, $document, apiUrl) {
 
         function postLink(scope, element) {
-            scope.progress = '0%';
+            scope.progress = '';
             scope.hash = false;
 
             // FIXME: Use ModernizR for browser feature check.
@@ -76,12 +76,14 @@
 
 
                     // upload with dployUplaod service
-                    dployUpload.upload(files, function (progress, hash) {
+                    dployUpload.sendFile(files, function (progress, hash) {
+
+                        console.log('progress :', progress, hash);
 
                         // update progress info
                         if (progress !== undefined) {
                             console.log('update scope.progress to ' + progress);
-                            scope.progress = progress;
+                            scope.progress = progress + '%';
                             scope.$digest();
                         }
 
@@ -93,7 +95,6 @@
                             scope.$digest();
 
                             var inputDl = element.find('.build_link');
-
                             inputDl.focus();
                             inputDl.select();
 

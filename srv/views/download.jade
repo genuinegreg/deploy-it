@@ -6,9 +6,9 @@ head
     meta(name='viewport',content='width=device-width, initial-scale=1.0')
     meta(name='description',content='')
     meta(name='author',content='')
-    link(href='./styles/bootstrap.css',rel='stylesheet')
+    link(href='#{staticUrl}/styles/bootstrap.css',rel='stylesheet')
     link(href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600',rel='stylesheet',type='text/css')
-    link(href='./styles/dploy_mobile.css',rel='stylesheet')
+    link(href='#{staticUrl}/styles/dploy_mobile.css',rel='stylesheet')
     link(rel='shortcut icon',href='./ico/favicon.png')
 body
     header
@@ -42,4 +42,4 @@ body
                         th #{uploadDate}
     footer
         div.container-fluid
-            img(src='./images/logo.png',width='60')
+            img(src='#{staticUrl}/images/logo.png',width='60')

@@ -59,8 +59,8 @@ app.configure('production', function () {
 app.configure(function () {
 
     // dploy middlewares
-    app.use(middleware.checkRequestHeaders);
     app.use(middleware.cors);
+    app.use(middleware.checkRequestHeaders);
 
     // serve static data
     app.use(express['static'](ncf.get('paths:data')));
@@ -83,6 +83,7 @@ app.configure('development', function () {
 app.get(/^\/((?:[0-9a-z]{8})+)$/, function (req, res) {
 
     res.render('download', {
+        staticUrl: ncf.get('urls:static'),
         hash: req.params[0],
         version: '1.0',
         minos: '5.1',
@@ -103,6 +104,7 @@ app.get('/app.json/info/:id', apiRoute.appInfo);
 app.post('/user.json/signin', apiRoute.signin);
 app.post('/user.json/login', apiRoute.login);
 app.post('/user.json/logout', apiRoute.logout);
+
 
 
 app.all('/*', function (req, res) {

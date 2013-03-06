@@ -4,15 +4,23 @@
 
     angular.module('dployApp').factory('dployUpload', ['apiUrl', function (apiUrl) {
 
+        var checks = {
+            formData: !!window.FormData,
+            progress: 'uploadRoute' in new XMLHttpRequest()
+        };
+
         // Public API here
         return {
-            upload: function (files, callback) {
 
-                var tests = {
-                    formdata: !!window.FormData,
-                    progress: 'uploadRoute' in new XMLHttpRequest()
-                };
-                var formData = tests.formdata ? new FormData() : null;
+            formdata: checks.formData,
+            progress: checks.progress,
+
+            sendFile: function (files, callback) {
+
+
+
+
+                var formData = checks.formData ? new FormData() : undefined;
 
                 if (files.length < 1) {
                     console.log('Error : no file');
@@ -21,32 +29,40 @@
 
 
                 // now post a new XHR request
-                if (tests.formdata) {
+                if (formData) {
+                    console.log('prepare upload');
 
                     formData.append('file', files[0]);
 
-                    var xhr = new XMLHttpRequest();
+                    $.ajax({
+                        type: 'POST',
+                        url: apiUrl + '/app.json/upload',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        xhr: function () {
 
-                    xhr.open('POST', apiUrl + '/app.json/upload');
+                            var xhr = new XMLHttpRequest();
 
-                    xhr.onload = function (xhr) {
-                        var response = JSON.parse(xhr.currentTarget.response);
-                        callback(undefined, response.hash);
-                    };
-
-                    if (tests.progress) {
-                        xhr.upload.onprogress = function (event) {
-                            if (event.lengthComputable) {
-                                var progress = (event.loaded / event.total * 100);
-                                progress = (progress <= 100 && progress >= 0) ? progress : 0;
-
-                                callback(parseInt(progress, 10), undefined);
+                            //Upload progress
+                            if (xhr.upload) {
+                                xhr.upload.addEventListener('progress', function (evt) {
+                                    if (evt.lengthComputable) {
+                                        var percentComplete = evt.loaded / evt.total;
+                                        percentComplete = (percentComplete <= 100 && percentComplete >= 0) ? percentComplete : 0;
+                                        callback(parseInt(percentComplete, 10), undefined);
+                                    }
+                                }, false);
                             }
-                        };
-                    }
 
 
-                    xhr.send(formData);
+                            return xhr;
+                        },
+                        success: function (data) {
+                            console.log('done');
+                            callback(undefined, data.hash);
+                        }
+                    });
 
                 }
             }
