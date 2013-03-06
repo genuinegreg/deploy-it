@@ -18,8 +18,6 @@
             sendFile: function (files, callback) {
 
 
-
-
                 var formData = checks.formData ? new FormData() : undefined;
 
                 if (files.length < 1) {
@@ -48,7 +46,7 @@
                             if (xhr.upload) {
                                 xhr.upload.addEventListener('progress', function (evt) {
                                     if (evt.lengthComputable) {
-                                        var percentComplete = evt.loaded / evt.total;
+                                        var percentComplete = (evt.loaded / evt.total) * 100;
                                         percentComplete = (percentComplete <= 100 && percentComplete >= 0) ? percentComplete : 0;
                                         callback(parseInt(percentComplete, 10), undefined);
                                     }
