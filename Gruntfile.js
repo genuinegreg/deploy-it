@@ -16,8 +16,6 @@ module.exports = function (grunt) {
         'static': ncf.get('urls:static')
     };
 
-    console.log('PLOP : ' + urlsConfig.api);
-
     // configurable paths
     var yeomanConfig = {
         app: 'app',
@@ -126,10 +124,9 @@ module.exports = function (grunt) {
             }
         },
         jade: {
-            compile: {
+            dist: {
                 options: {
                     data: {
-                        debug: true,
                         apiUrl: '<%= urls.api %>',
                         staticUrl: '<%= urls.static %>'
                     },
@@ -211,12 +208,14 @@ module.exports = function (grunt) {
         },
         cssmin: {
             dist: {
-                files: {
-                    '<%= yeoman.dist %>/styles/main.css': [
-                        '.tmp/styles/{,*/}*.css',
-                        '<%= yeoman.app %>/styles/{,*/}*.css'
-                    ]
-                }
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= yeoman.dist %>',
+                        dest: '<%= yeoman.dist %>',
+                        src: ['styles/*.css']
+                    }
+                ]
             }
         },
         htmlmin: {
@@ -332,7 +331,6 @@ module.exports = function (grunt) {
 //        'compass:dist',
         'useminPrepare',
         'imagemin',
-        'cssmin',
         'htmlmin',
         'concat',
         'strip',
@@ -340,6 +338,7 @@ module.exports = function (grunt) {
         'cdnify',
         'usemin',
         'ngmin',
+        'cssmin',
         'uglify'
     ]);
 

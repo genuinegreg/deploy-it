@@ -32,7 +32,7 @@
 
                     formData.append('file', files[0]);
 
-                    $.ajax({
+                    var upReq = $.ajax({
                         type: 'POST',
                         url: apiUrl + '/app.json/upload',
                         data: formData,
@@ -55,11 +55,16 @@
 
 
                             return xhr;
-                        },
-                        success: function (data) {
-                            console.log('done');
-                            callback(undefined, data.hash);
                         }
+                    });
+
+                    upReq.done(function (data) {
+                        callback(undefined, data.hash);
+                    });
+
+                    upReq.fail(function () {
+                        // FIXME: better upload error handling
+                        window.alert('upload failed, sorry.');
                     });
 
                 }
