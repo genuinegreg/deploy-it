@@ -80,6 +80,9 @@ app.configure('development', function () {
 });
 
 
+/**
+ * Install page
+ */
 app.get(/^\/((?:[0-9a-z]{8})+)$/, function (req, res) {
 
     res.render('download', {
@@ -95,7 +98,7 @@ app.get(/^\/((?:[0-9a-z]{8})+)$/, function (req, res) {
 });
 
 /**
- * Upload handler
+ * Apis
  */
 app.post('/app.json/upload', uploadRoute.upload);
 app.get('/app.json/list', apiRoute.appList);
@@ -104,11 +107,5 @@ app.get('/app.json/info/:id', apiRoute.appInfo);
 app.post('/user.json/signin', apiRoute.signin);
 app.post('/user.json/login', apiRoute.login);
 app.post('/user.json/logout', apiRoute.logout);
-
-
-
-app.all('/*', function (req, res) {
-    res.respond('', 404);
-});
 
 exports.app = app;
