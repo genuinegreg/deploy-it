@@ -10,9 +10,7 @@
             // FIXME: Use ModernizR for browser feature check.
             var tests = {
                 filereader: typeof FileReader !== 'undefined',
-                dnd: 'draggable' in document.createElement('span'),
-                formdata: !!window.FormData,
-                progress: 'uploadRoute' in new XMLHttpRequest()
+                dnd: 'draggable' in document.createElement('span')
             };
 
             var supportAlert = {
@@ -26,12 +24,12 @@
             } else {
                 supportAlert.filereader.addClass('fail');
             }
-            if (tests.formdata) {
+            if (dployUpload.formdata) {
                 supportAlert.formdata.addClass('hide');
             } else {
                 supportAlert.formdata.addClass('fail');
             }
-            if (tests.progress) {
+            if (dployUpload.progress) {
                 supportAlert.progress.addClass('hide');
             } else {
                 supportAlert.progress.addClass('fail');
@@ -57,6 +55,7 @@
 
                     // if drop is not in dropzone elements
                     if ($(e.target).closest(element).length < 1) {
+                        endDrag();
                         return false;
                     }
 
