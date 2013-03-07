@@ -112,7 +112,6 @@
             templateUrl: 'scripts/directives/dployUpload.html',
             restrict: 'A',
             replace: true,
-            // scope: {},
             transclude: true,
             link: postLink
         };

@@ -45,6 +45,9 @@ Tests & prod
 
 ### Dev
 
+    npm install
+    bower install
+
 Modifier le ~/.dploy/settings.json ou le fichier /etc/dploy/settings.json
 
     {
