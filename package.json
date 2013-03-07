@@ -45,5 +45,18 @@
   },
   "engines": {
     "node": ">=0.8.0"
-  }
+  },
+  "readmeFilename": "README.md",
+  "main": "src/start.js",
+  "directories": {
+    "test": "srv/test"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha -R spec srv/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/genuinegreg/deploy-it.git"
+  },
+  "author": ""
 }
