@@ -41,7 +41,9 @@ html
         script(src="components/bootstrap/js/bootstrap-dropdown.js")
         //endbuild
 
+
         //build:js scripts/scripts.js
+        script(src="components/angular-resource/angular-resource.js")
         script(src="scripts/app.js")
         script(src="scripts/controllers/main.js")
         script(src="scripts/controllers/install.js")
@@ -53,6 +55,8 @@ html
 
         script
             angular.module('dployApp').
-                constant('apiUrl', '#{apiUrl}').
+                constant('API_URL', '#{API_URL}').
                 constant('staticUrl', '#{staticUrl}');
+
+
 

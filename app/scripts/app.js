@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dployApp', [])
+angular.module('dployApp', ['ngResource'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {

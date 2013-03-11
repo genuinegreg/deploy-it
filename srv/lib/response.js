@@ -22,5 +22,5 @@ http.ServerResponse.prototype.respond = function (content, status) {
     }
     // respond with JSON data
     this.statusCode = status;
-    this.json(content);
+    this.jsonp(content);
 };

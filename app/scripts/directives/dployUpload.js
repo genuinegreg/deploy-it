@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('dployApp').directive('dployUpload', ['dployUpload', '$document', 'apiUrl', function (dployUpload, $document, apiUrl) {
+    angular.module('dployApp').directive('dployUpload', ['dployUpload', '$document', 'API_URL', function (dployUpload, $document, API_URL) {
 
         function postLink(scope, element) {
             scope.progress = '';
@@ -90,7 +90,7 @@
                         if (hash !== undefined) {
 
                             scope.hash = hash;
-                            scope.link = apiUrl + '/' + hash;
+                            scope.link = API_URL + '/' + hash;
                             scope.$digest();
 
                             var inputDl = element.find('.build_link');

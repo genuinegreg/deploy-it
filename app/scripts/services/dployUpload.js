@@ -2,7 +2,7 @@
 
     'use strict';
 
-    angular.module('dployApp').factory('dployUpload', ['apiUrl', function (apiUrl) {
+    angular.module('dployApp').factory('dployUpload', ['API_URL', function (API_URL) {
 
         var checks = {
             formData: !!window.FormData,
@@ -34,7 +34,7 @@
 
                     var upReq = $.ajax({
                         type: 'POST',
-                        url: apiUrl + '/app.json/upload',
+                        url: API_URL + '/app.json/upload',
                         data: formData,
                         processData: false,
                         contentType: false,

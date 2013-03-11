@@ -127,7 +127,7 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     data: {
-                        apiUrl: '<%= urls.api %>',
+                        API_URL: '<%= urls.api %>',
                         staticUrl: '<%= urls.static %>'
                     },
                     pretty: true

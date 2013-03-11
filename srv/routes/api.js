@@ -7,7 +7,30 @@ var api = require('../lib/api');
 
 
 exports.appList = function appList(req, res) {
-    res.respond(undefined, 500);
+
+    res.respond([
+        {
+            name: 'MyApp',
+            upload: new Date(2013, 1, 12, 15, 32, 0),
+            version: 5,
+            hash: '654321',
+            download: 6
+        },
+        {
+            name: 'OtherApp',
+            upload: new Date(2013, 0, 29, 14, 10),
+            version: 1,
+            hash: '123456',
+            download: 15
+        },
+        {
+            name: 'SomeApp',
+            upload: new Date(2013, 1, 19, 9, 59),
+            version: 16,
+            hash: 'abc54d',
+            download: 46
+        }
+    ]);
 
 };
 
