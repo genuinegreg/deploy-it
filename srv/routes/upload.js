@@ -11,12 +11,12 @@ exports.upload = function upload(req, res) {
 
     if (req.files === undefined) {
         res.send(500, 'Error : no file');
-        res.end();
+        return res.end();
     }
 
     if (req.files.file instanceof Array) {
         res.send(500, 'Error: multiple files upload are not allowed');
-        res.end();
+        return res.end();
     }
 
     uploadHandler.handle(req.files.file, function (err, hash) {
