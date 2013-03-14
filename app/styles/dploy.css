@@ -5,7 +5,6 @@ body{
     padding: 0;
     margin: 0;
     font-family: 'Open Sans', sans-serif;
-    /*background: #f9f9f9 url('../images/snow.png') repeat;*/
 }
 h1{
     font-weight: 200;
@@ -23,6 +22,52 @@ p, li{
 hr{
     margin:5px 0;
 }
+a,
+a:hover{
+    color:#fc543e;
+}
+/*-------------------------------------------------*\
+ *  Misc UI
+ *-------------------------------------------------*/
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus{
+ outline:0 !important;
+ box-shadow: none;
+-moz-box-shadow: none;
+-webkit-box-shadow: none;
+  border-color:#fc543e;
+}
+
+.btn,
+.btn:focus{
+    background-image:none;
+    outline: none;
+    box-shadow:none !important;
+}
+
+.btn-primary{
+    background: #fc543e;
+}
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+  background: #ec442e;
+}
 /*-------------------------------------------------*\
  *  Header
  *-------------------------------------------------*/
@@ -30,11 +75,11 @@ header{
     padding : 20px 0 20px;
 }
 
-
 header #logo span.baseline{
     display: block;
     margin:-16px 0 0 70px;
     font-size: 15px;
+    color: #999;
 }
 
 header .focus{
