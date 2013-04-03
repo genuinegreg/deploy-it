@@ -6,6 +6,7 @@ var Schema = mongoose.Schema;
 
 // ** Schema definition ************************************************************************************************
 var AccountSchema = new Schema({
+    _id: Schema.Types.ObjectId,
     creation: { type: Date, 'default': Date.now },
     users: [
         {
@@ -15,16 +16,22 @@ var AccountSchema = new Schema({
     ]
 });
 
-var SessionId = new Schema({
+var AuthTokenSchema = new Schema({
     _id: String,
     account: { type: Schema.Types.ObjectId, ref: 'Account' },
-    update: {type: Date, 'default': Date.now, index: { expires: '15m' }}
+    update: {type: Date, 'default': Date.now, index: { expires: '30d' }}
+});
+
+var SessionIdSchema = new Schema({
+    _id: String,
+    account: { type: Schema.Types.ObjectId, ref: 'Account' },
+    update: {type: Date, 'default': Date.now, index: { expires: '40m' }}
 });
 
 
 var AppSchema = new Schema({
+    _id: String,
     upload: { type: Date, 'default': Date.now },
-    hash: String,
     name: String,
     version: Number,
     type: String
@@ -40,7 +47,8 @@ mongoose.connect('mongodb://' + ncf.get('db:host') + '/' + ncf.get('db:database'
 
 module.exports = {
     Account: mongoose.model('Account', AccountSchema),
-    SessionId: mongoose.model('SessionId', SessionId),
+    AuthToken: mongoose.model('AuthToken', AuthTokenSchema),
+    SessionId: mongoose.model('SessionId', SessionIdSchema),
     App: mongoose.model('App', AppSchema),
     ObjectId: Schema.ObjectId
 };
