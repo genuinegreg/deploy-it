@@ -1,9 +1,16 @@
 'use strict';
 
-var mmh = require('murmurhash3');
+// load config
+var ncf = require('../etc/nconfLoader');
 
+// require deps
+var mmh = require('murmurhash3');
 var crypto = require('crypto');
-var salt = 'dploy&495%';
+
+
+// get hash salt
+var salt = ncf.get('hash:salt');
+
 
 function seed(value, order) {
     if (value === undefined || value === null || value === '') {

@@ -17,5 +17,9 @@
     "urls": {
         "static": "http://dploy.plop.io",
         "api": "http://dploy.plop.io"
+    },
+
+    "hash" : {
+        "salt": "dploy&495%"
     }
 }
