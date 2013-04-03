@@ -2,7 +2,7 @@
   "name": "dploy",
   "version": "0.1.0",
   "dependencies": {
-    "express": "~3.0.3",
+    "express": "~3.1.0",
     "jade": "~0.28.1",
     "i18n": "~0.3.5",
     "murmurhash3": "~0.1.4",
@@ -10,7 +10,9 @@
     "synchronize": "~0.5.2",
     "plist": "git://github.com/genuinegreg/node-plist.git",
     "mongoose": "~3.5.5",
-    "nconf": "~0.6.7"
+    "nconf": "~0.6.7",
+    "attempt": "~0.2.0",
+    "queue-async": "~1.0.3"
   },
   "devDependencies": {
     "grunt": "~0.4.0",
@@ -26,7 +28,7 @@
     "grunt-contrib-htmlmin": "~0.1.1",
     "grunt-contrib-imagemin": "~0.1.2",
     "grunt-contrib-livereload": "~0.1.0",
-    "grunt-bower-hooks": "~0.2.0",
+    "grunt-bower-requirejs": "~0.2.0",
     "grunt-usemin": "~0.1.7",
     "grunt-strip": "~0.2.0",
     "grunt-regarde": "~0.1.1",
@@ -37,7 +39,7 @@
     "grunt-ngmin": "~0.0.1",
     "grunt-preprocess": "~2.0.0",
     "grunt-contrib-jade": "~0.4.0",
-    "generator-testacular": "~0.1.1",
+    "generator-karma": "~0.1.1",
     "generator-angular": "~0.1.5",
     "should": "~1.2.2",
     "mocha": "~1.8.1",
