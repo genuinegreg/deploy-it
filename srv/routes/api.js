@@ -1,12 +1,12 @@
 'use strict';
 
 
-var api = require('../lib/api');
+var api = require('../lib/api/api');
 
 // var ncf = require('../etc/nconfLoader');
 
 
-exports.appList = function appList(req, res) {
+exports.appList = function (req, res) {
 
     res.respond([
         {
@@ -34,7 +34,7 @@ exports.appList = function appList(req, res) {
 
 };
 
-exports.appInfo = function appInfo(req, res) {
+exports.appInfo = function (req, res) {
     res.respond(undefined, 500);
 };
 exports.signin = function signin(req, res) {
@@ -64,7 +64,7 @@ exports.signin = function signin(req, res) {
 
 };
 
-exports.login = function login(req, res) {
+exports.login = function (req, res) {
 
     var username = req.body.username,
         password = req.body.password;
@@ -78,7 +78,7 @@ exports.login = function login(req, res) {
     }
 
 
-    api.login(username, password, function (err, sessionid) {
+    api.login(username, password, undefined, function (err, sessionid) {
 
         if (err) {
             return res.respond(undefined, 500);
@@ -95,7 +95,7 @@ exports.login = function login(req, res) {
 };
 
 
-exports.logout = function login(req, res) {
+exports.logout = function (req, res) {
 
     var params = req.body;
 
