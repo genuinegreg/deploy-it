@@ -22,7 +22,6 @@ exports.handle = function handle(file, cb) {
     kind = 'software';
 
     sync.fiber(
-
         function () {
 
 
