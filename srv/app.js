@@ -104,6 +104,7 @@ app.post('/app.json/upload', uploadRoute.upload);
 app.get('/app.json/list', apiRoute.appList);
 app.get('/app.json/info/:id', apiRoute.appInfo);
 
+//app.get('user.json/identity/:hash', apiRoute.getIdentity);
 app.post('/user.json/signin', apiRoute.signin);
 app.post('/user.json/login', apiRoute.login);
 app.post('/user.json/logout', apiRoute.logout);
