@@ -55,31 +55,6 @@ exports.create = function (username, password, callback) {
 };
 
 /**
- * @name CreateGuestAccountResponse
- * @param err db errors
- * @param account newly created account
- */
-
-/**
- * Create a Guest account with no user and password.
- * We can log in only with a AuthToken
- *
- * This is used to create temporary guest account
- *
- * Those Guest account are bind to a browser and can be converted
- * to a real account or juste use to save uploaded app and deleted we use login their account (app should be moved to
- * their real account)
- *
- * @param callback
- */
-exports.createGuestAccount = function (callback) {
-    // create guest account
-    var newAccount = new db.Account({});
-    newAccount.save(callback);
-}
-
-
-/**
  * @name LoginResponse
  * @param {Error} err db errors
  * @param {String} sessionid sessionid object or null if wrrong credential are used
@@ -156,7 +131,7 @@ exports.login = function (username, password, persist, callback) {
 /**
  * @name LoginByAuthTokenResponse
  * @param {Error} err db errors
- * @param {String} sessionid sessionid object or null if wrrong credential are used
+ * @param {String} sessionid sessionid object or null if wrong credential are used
  * @param {String} authToken authToken
  */
 
@@ -197,10 +172,6 @@ exports.loginByAuthToken = function (authtoken, callback) {
         });
 }
 
-exports.ping = function () {
-
-};
-
 /**
  * @name LogoutResponse
  * @param {Error} err db errors
@@ -208,12 +179,22 @@ exports.ping = function () {
  */
 
 /**
- * Revoke a sessionId
+ * Revoke a sessionId and authtoken
  * @param {String} sessionid
  * @param callback
  */
-exports.logout = function (sessionid, callback) {
+exports.logout = function (sessionid, authtoken, callback) {
+
+    if (authtoken instanceof Function) {
+        callback = authtoken;
+        authtoken = false;
+    }
+
     db.SessionId.findByIdAndRemove(sessionid, callback);
+
+    if (authtoken) {
+        db.AuthToken.findByIdAndRemove(authtoken, callback);
+    }
 };
 
 /**
@@ -261,6 +242,5 @@ function tryGenerateAuthtoken(account, callback) {
     newAuthToken.save(function (err, authtoken) {
         callback(err, authtoken._id);
     });
-
 }
 

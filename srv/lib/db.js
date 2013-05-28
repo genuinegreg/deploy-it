@@ -25,12 +25,14 @@ var AuthTokenSchema = new Schema({
 var SessionIdSchema = new Schema({
     _id: String,
     account: { type: Schema.Types.ObjectId, ref: 'Account' },
-    update: {type: Date, 'default': Date.now, index: { expires: '40m' }}
+    update: {type: Date, 'default': Date.now, index: { expires: '40m' }},
+    tempApps: [String]
 });
 
 
 var AppSchema = new Schema({
     _id: String,
+    account: String,
     upload: { type: Date, 'default': Date.now },
     name: String,
     version: Number,
